@@ -30,3 +30,12 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+.env
+private_key.pem
+public_key.pem
+.vscode/
+.DS_Store
+build-test/DB/data
+build-test/B/db/exports
+build-test/B/db/respaldos

@@ -1,0 +1,55 @@
+services:
+  base-droply:
+    # container_name: base-droply
+    image: ghcr.io/oppendevs/servicio-base-de-droply:v1.4.0
+    build:
+      context: ../.
+      dockerfile: ./build/Dockerfile
+    volumes:
+      - ./B/.env:/app/config/.env:ro
+      - ./B/private_key.pem:/app/config/private_key.pem:ro
+      - ./B/public_key.pem:/app/config/public_key.pem:ro
+      - ./B/db/respaldos:/app/db/respaldos
+      - ./B/db/exports:/app/db/exports
+      - ./B/db/estado_inicial.sql:/app/db/estado_inicial.sql
+      - ./B/files/uploads:/app/files/uploads
+    ports:
+      - "80:8080"
+    restart: always
+    networks:
+      - red-principal
+    depends_on:
+      - postgres-droply
+    
+  postgres-droply:
+    container_name: postgres-droply
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: DarthMonkus117
+      POSTGRES_DB: droply
+    volumes:
+      - ./DB/data:/var/lib/postgresql/data
+      - ./DB/b.sql:/docker-entrypoint-initdb.d/backup.sql:ro
+    expose:
+      - "5432"
+    ports:
+      - "5431:5432"
+    networks:
+      - red-principal
+
+  mailer:
+    container_name: mailer
+    build:
+      context: ./mailer
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - red-principal
+
+networks:
+  red-principal:
+    driver: bridge
+
+      
