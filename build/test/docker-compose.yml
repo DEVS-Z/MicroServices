@@ -1,7 +1,7 @@
 services:
   base-droply:
     build:
-      context: ../.
+      context: ../../.
       dockerfile: ./build/Dockerfile
     volumes:
       - ./B/.env:/app/config/.env:ro
