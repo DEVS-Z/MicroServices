@@ -2,8 +2,9 @@
 package roles_model
 
 import (
-	base_models "main/pkg/base/models"
 	user_model "main/source/modules/users/models"
+
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 )
 
 type RolesStruct struct {

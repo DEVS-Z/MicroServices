@@ -2,12 +2,13 @@ package modulos_rol_service
 
 import (
 	"fmt"
-	base_service "main/pkg/base/service"
 	"main/source/modules/modulos"
 	modulos_model "main/source/modules/modulos/model"
 	modulos_rol_model "main/source/modules/modulosRol/model"
 	roles_model "main/source/modules/roles/model"
 	roles_services "main/source/modules/roles/services"
+
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
 type ModulosRolService struct {

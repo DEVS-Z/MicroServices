@@ -1,11 +1,11 @@
 package user_service
 
 import (
-	"main/connection/services/mailer"
-	base_service "main/pkg/base/service"
 	roles_model "main/source/modules/roles/model"
 	roles_services "main/source/modules/roles/services"
 	user_model "main/source/modules/users/models"
+
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
 type UserService struct {
@@ -91,7 +91,6 @@ func (s *UserService) Insert(user user_model.UserStruct) (*user_model.UserSaniti
 	if err != nil {
 		return nil, err
 	}
-	mailer.SendMail(user.Matricula, user.Contrasena, user.Correo)
 
 	return usr, nil
 }

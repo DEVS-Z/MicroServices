@@ -221,7 +221,7 @@ func generateIndexGo(moduleDir, modelPackage, structName, table string) string {
 	return fmt.Sprintf(`package %s
 
 import (
-	base_service "main/pkg/base/service"
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 	middleware "main/source/helpers/middlewares"
 	"main/source/helpers/router"
 	%s "main/source/modules/%s/model"
@@ -275,7 +275,7 @@ func generateModelGoWithFields(packageName, structName, lowerCamelName, tableNam
 package %s
 
 import (
-	base_models "main/pkg/base/models"
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 	"time"
 )
 

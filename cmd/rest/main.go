@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	config "main/config"
-	modules "main/pkg/base/core"
 	"main/source/helpers/router"
+
+	modules "github.com/miqueaz/FrameGo/pkg/base/core"
 )
 
 var version = "1.3.4"

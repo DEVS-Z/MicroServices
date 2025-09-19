@@ -3,8 +3,10 @@ package postgres
 import (
 	"database/sql"
 	"log"
-	ORM "main/pkg/sql"
 	"os"
+
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
+	ORM "github.com/miqueaz/FrameGo/pkg/sql"
 
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -25,6 +27,7 @@ func init() {
 	}
 	println("Conectando a la base de datos PostgreSQL...", connection.Host)
 	DB, err = ORM.InitPostgres(connection)
+	base_models.SetGlobalDB(DB)
 	if DB == nil {
 		log.Fatal("Error: La conexión a la base de datos PostgreSQL no se ha inicializado." + err.Error())
 	}

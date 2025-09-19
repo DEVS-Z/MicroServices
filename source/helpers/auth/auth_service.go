@@ -2,10 +2,11 @@ package auth
 
 import (
 	"errors"
-	"main/pkg/crypto"
 	key "main/security/token"
 	user_model "main/source/modules/users/models"
 	user_service "main/source/modules/users/services"
+
+	"github.com/miqueaz/FrameGo/pkg/crypto"
 )
 
 type AuthService struct {

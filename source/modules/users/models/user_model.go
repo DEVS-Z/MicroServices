@@ -1,7 +1,7 @@
 package user_model
 
 import (
-	base_models "main/pkg/base/models"
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 )
 
 type UserStruct struct {

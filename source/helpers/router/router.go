@@ -1,7 +1,7 @@
 package router
 
 import (
-	"main/pkg/base/router"
+	"github.com/miqueaz/FrameGo/pkg/base/router"
 
 	"github.com/gin-contrib/cors"
 )

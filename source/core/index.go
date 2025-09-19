@@ -1,7 +1,6 @@
 package modules
 
 import (
-	modules "main/pkg/base/core"
 	"main/source/helpers/auth"
 	"main/source/modules/actividades"
 	adminDB "main/source/modules/adminDB"
@@ -9,6 +8,8 @@ import (
 	modulesRol "main/source/modules/modulosRol"
 	"main/source/modules/roles"
 	"main/source/modules/users"
+
+	modules "github.com/miqueaz/FrameGo/pkg/base/core"
 )
 
 func init() {

@@ -3,9 +3,10 @@ package role_middleware
 import (
 	"errors"
 	"log"
-	base_models "main/pkg/base/models"
-	"main/pkg/client"
 	modulos_rol_service "main/source/modules/modulosRol/service"
+
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
+	"github.com/miqueaz/FrameGo/pkg/client"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"

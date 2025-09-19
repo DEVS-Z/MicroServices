@@ -2,8 +2,9 @@ package jwt_middleware
 
 import (
 	"errors"
-	"main/pkg/client"
 	token "main/security/token"
+
+	"github.com/miqueaz/FrameGo/pkg/client"
 
 	"github.com/gin-gonic/gin"
 )

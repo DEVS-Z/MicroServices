@@ -1,8 +1,9 @@
 package actividades_services
 
 import (
-	base_service "main/pkg/base/service"
 	actividades_model "main/source/modules/actividades/model"
+
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
 type ActividadesService struct {

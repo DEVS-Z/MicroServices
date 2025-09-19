@@ -1,8 +1,9 @@
 package roles_services
 
 import (
-	base_service "main/pkg/base/service"
 	roles_model "main/source/modules/roles/model"
+
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
 type RoleService struct {

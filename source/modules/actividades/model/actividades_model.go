@@ -2,8 +2,9 @@
 package actividades_model
 
 import (
-	base_models "main/pkg/base/models"
 	"time"
+
+	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 )
 
 type ActividadesStruct struct {

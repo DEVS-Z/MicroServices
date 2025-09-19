@@ -1,10 +1,11 @@
 package modulos
 
 import (
-	base_service "main/pkg/base/service"
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
 	modulos_model "main/source/modules/modulos/model"
+
+	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
 var Service = base_service.NewService[base_service.Default[modulos_model.ModulosStruct]](*modulos_model.Model)
