@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	config "main/config"
-	modules "main/source/core"
+	modules "main/pkg/base/core"
 	"main/source/helpers/router"
 )
 

@@ -1,7 +1,5 @@
 services:
   base-droply:
-    # container_name: base-droply
-    image: ghcr.io/oppendevs/servicio-base-de-droply:v1.4.0
     build:
       context: ../.
       dockerfile: ./build/Dockerfile
