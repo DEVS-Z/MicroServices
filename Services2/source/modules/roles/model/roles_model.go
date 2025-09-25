@@ -14,7 +14,7 @@ type RolesStruct struct {
 
 type UsersInRoles struct {
 	Role  *string
-	Users []user_model.UserSanitizer
+	Users []*user_model.UserSanitizer
 }
 
 var Model = base_models.NewModel[RolesStruct]("roles", "roles")
