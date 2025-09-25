@@ -2,29 +2,11 @@ package token
 
 import (
 	"errors"
-	pb "main/connection/services/user_service"
 	"main/security/key"
 	"strings"
-	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
-
-func GenerateJWT(user pb.User) (string, error) {
-	privateKey, err := key.LoadPrivateKey()
-	if err != nil {
-		return "", err
-	}
-	claims := jwt.MapClaims{
-		"username": user.Matricula,
-		"role":     user.Rol,
-		"id":       user.Id,
-		"exp":      jwt.NewNumericDate(time.Now().Add(120 * time.Minute)),
-	}
-
-	token := jwt.NewWithClaims(jwt.SigningMethodRS256, claims)
-	return token.SignedString(privateKey)
-}
 
 func ValidToken(r string) (*jwt.Token, error) {
 	tokenStr := getToken(r)

@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/jmoiron/sqlx"
 	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 	ORM "github.com/miqueaz/FrameGo/pkg/sql"
 
@@ -12,9 +13,9 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var DB *sql.DB
+var DB = Init()
 
-func Init() {
+func Init() *sql.DB {
 	var err error
 	godotenv.Load("./config/.env")
 	connection := ORM.Connection{
@@ -26,9 +27,16 @@ func Init() {
 		SSLMode:  os.Getenv("SSLMODE_DB_POSTGRES"),
 	}
 	println("Conectando a la base de datos PostgreSQL...", connection.Host)
-	DB, err = ORM.InitPostgres(connection)
-	base_models.SetGlobalDB(DB)
+	DB, err := ORM.InitPostgres(connection)
+	if err != nil || DB == nil {
+		log.Fatalf("Error inicializando PostgreSQL: %v", err)
+	}
+	base_models.SetDB(sqlx.NewDb(DB, "postgres"))
 	if DB == nil {
 		log.Fatal("Error: La conexión a la base de datos PostgreSQL no se ha inicializado." + err.Error())
 	}
+
+	println("Conexión a PostgreSQL exitosa")
+	return DB
+
 }

@@ -24,13 +24,9 @@ func SignIn(crudo map[string]any) (string, error) {
 		password: crudo["password"].(string),
 	}
 
-	users, err := user_service.Service.Service.Read(map[string]any{"Matricula": body.username})
-	if len(users) <= 0 {
-		return "", errors.New("user not found")
-	}
-	user := users[0]
+	user, err := user_service.Service.Service.ReadOne(1)
 	if err != nil {
-		return "", err
+		return "", errors.New("user not found")
 	}
 
 	// if err := crypto.CheckPassword(user.Contrasena, body.password); err != nil {

@@ -1,15 +1,22 @@
 package main
 
 import (
+	"fmt"
 	restmain "main/cmd/rest"
-	p "main/connection/db/postgres"
-	c "main/source/core"
+	"main/config"
+	_ "main/connection/db/postgres"
+	"main/source/core"
+
+	modules "github.com/miqueaz/FrameGo/pkg/base/core"
 )
 
 func main() {
 	// Ejecutar REST en goroutine
-	p.Init()
-	c.Init()
+	fmt.Println("Iniciando servicio...")
+	config.Execute()
+	core.Init()
+	modules.Execute()
+
 	go func() {
 		restmain.RunRest()
 	}()
