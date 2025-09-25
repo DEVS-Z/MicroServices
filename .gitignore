@@ -39,3 +39,6 @@ public_key.pem
 build-test/DB/data
 build-test/B/db/exports
 build-test/B/db/respaldos
+test/DB/data
+test/B/db/exports
+test/B/db/respaldos
