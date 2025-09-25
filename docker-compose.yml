@@ -20,7 +20,7 @@ services:
     networks:
       - red-principal
     depends_on:
-      - postgres-droply
+      - postgres-zfut
 
   service2:
       build:
@@ -43,18 +43,18 @@ services:
       networks:
         - red-principal
       depends_on:
-        - postgres-droply
-    
-  postgres-droply:
-    container_name: postgres-droply
+        - postgres-zfut
+
+  postgres-zfut:
+    container_name: postgres-zfut
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: DarthMonkus117
       POSTGRES_DB: droply
     volumes:
-      - ./test/B/DB/data:/var/lib/postgresql/data
-      - ./test/B/DB/b.sql:/docker-entrypoint-initdb.d/backup.sql:ro
+      - ./test/B/db/data:/var/lib/postgresql/data
+      - ./test/B/db/b.sql:/docker-entrypoint-initdb.d/backup.sql:ro
     expose:
       - "5432"
     ports:

@@ -1,11 +1,10 @@
-package modules
+package core
 
 import (
+	"fmt"
 	"main/source/helpers/auth"
-	"main/source/modules/actividades"
-	adminDB "main/source/modules/adminDB"
 	"main/source/modules/modulos"
-	modulesRol "main/source/modules/modulosRol"
+	"main/source/modules/modulosRol"
 	"main/source/modules/roles"
 	"main/source/modules/users"
 
@@ -13,13 +12,11 @@ import (
 )
 
 func Init() {
-	print("Cargando módulos...")
-	modules.NewModule(actividades.Init)
-	modules.NewModule(modulesRol.Init)
+	fmt.Println("Cargando módulos...")
+	modules.NewModule(modulosRol.Init)
 	modules.NewModule(modulos.Init)
 	modules.NewModule(roles.Init)
 	modules.NewModule(users.Init)
-	modules.NewModule(adminDB.Init)
 	auth.AuthRouter()
 
 }
