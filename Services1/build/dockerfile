@@ -1,0 +1,35 @@
+# Etapa de construcción
+FROM golang:1.25rc2-bookworm AS builder
+
+# Argumento para arquitectura (por defecto: arm64)
+# ARG TARGETARCH=arm64
+ENV CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=${TARGETARCH}
+
+WORKDIR /app
+
+# Copiar solo go.mod y go.sum primero para mejor cache
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Ahora el resto del código
+COPY . .
+
+# Compilar el binario
+RUN go build -ldflags="-s -w" -o server ./main.go
+
+# Etapa de ejecución (imagen mínima)
+FROM debian:bookworm-slim
+
+WORKDIR /app
+
+COPY --from=builder /app/server .
+
+# ⚠️ Dar permisos de ejecución
+RUN chmod +x ./server
+
+EXPOSE 8080
+EXPOSE 50051
+
+CMD ["./server"]

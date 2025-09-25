@@ -1,0 +1,13 @@
+# Ignorar módulos de Go descargados
+# go.mod
+# go.sum
+
+# Archivos del sistema
+*.log
+*.env
+.DS_Store
+*.swp
+.vscode/
+build-test/
+.github/
+*.pem
