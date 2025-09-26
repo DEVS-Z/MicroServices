@@ -29,7 +29,6 @@ func (s *server) ReadOne(ctx context.Context, req *pb.UserIdRequest) (*pb.UserRe
 	puser := pb.UserSanitizer{
 		Id:              int32(user.ID),
 		PrimerNombre:    user.PrimerNombre,
-		SegundoNombre:   *user.SegundoNombre,
 		PrimerApellido:  user.PrimerApellido,
 		SegundoApellido: *user.SegundoApellido,
 		Correo:          user.Correo,
