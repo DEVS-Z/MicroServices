@@ -1,0 +1,92 @@
+// Especifica la sintaxis de la versión 3 de Protocol Buffers.
+syntax = "proto3";
+
+// Define el paquete para evitar conflictos de nombres.
+package roles;
+
+// Importa el mensaje Empty, que es útil para métodos que no devuelven datos.
+import "google/protobuf/empty.proto";
+
+// Opción para especificar el paquete de Go donde se generará el código.
+option go_package = "../../source/modules/roles/proto";
+
+// ===================================================================
+//  Definición del Servicio gRPC
+// ===================================================================
+
+// El servicio 'RoleService' define los métodos RPC basados en tu interfaz 'Methods'.
+service RoleService {
+  // Obtiene uno o más roles según un filtro.
+  rpc GetRoles(GetRolesRequest) returns (GetRolesResponse);
+  // Crea un nuevo rol.
+  rpc CreateRole(CreateRoleRequest) returns (Role);
+  // Actualiza un rol existente.
+  rpc UpdateRole(UpdateRoleRequest) returns (Role);
+  // Elimina un rol por su ID.
+  rpc DeleteRole(DeleteRoleRequest) returns (google.protobuf.Empty);
+}
+
+// ===================================================================
+//  Definición de Mensajes
+// ===================================================================
+
+// Mensaje 'Role' - Corresponde a tu struct 'RolesStruct'.
+// Representa un rol en el sistema.
+message Role {
+  // ID único del rol. El tag '1' indica el orden del campo.
+  int32 id = 1;
+  // Nombre del rol.
+  string nombre = 2;
+}
+
+// Mensaje 'User' - Representación para 'user_model.UserSanitizer'.
+// Se asume una estructura básica de usuario.
+message User {
+  int32 id = 1;
+  string nombre = 2;
+  string email = 3;
+}
+
+// Mensaje 'UsersInRole' - Corresponde a tu struct 'UsersInRoles'.
+// Agrupa a los usuarios que pertenecen a un rol específico.
+message UsersInRole {
+  // Nombre del rol.
+  string role_name = 1;
+  // Lista de usuarios en ese rol. 'repeated' indica una lista o slice.
+  repeated User users = 2;
+}
+
+
+// ===================================================================
+//  Mensajes para las Solicitudes (Request) y Respuestas (Response)
+// ===================================================================
+
+// --- Mensajes para GetRoles ---
+message GetRolesRequest {
+  // El ID es opcional para poder buscar un rol específico o todos si se omite.
+  optional int32 id = 1;
+}
+
+message GetRolesResponse {
+  // La respuesta contiene una lista de roles.
+  repeated Role roles = 1;
+}
+
+// --- Mensajes para CreateRole ---
+message CreateRoleRequest {
+  // Para crear un rol, solo necesitamos el nombre, ya que el ID se genera en el servidor.
+  string nombre = 1;
+}
+
+// --- Mensajes para UpdateRole ---
+message UpdateRoleRequest {
+  // Se envía el objeto completo del rol, incluyendo el ID del rol a actualizar.
+  int32 id = 1;
+  string nombre = 2;
+}
+
+// --- Mensajes para DeleteRole ---
+message DeleteRoleRequest {
+  // Para eliminar, solo se necesita el ID del rol.
+  int32 id = 1;
+}
