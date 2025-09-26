@@ -45,8 +45,8 @@ func UsersByRole() ([]roles_model.UsersInRoles, error) {
 
 		roleName := role.Nombre
 		dataSanitizer = append(dataSanitizer, roles_model.UsersInRoles{
-			Role:  &roleName,
-			Users: users, // aquí puedes cambiar Users a []*pb.UserSanitizer o mapear si quieres tu modelo interno
+			Role: &roleName,
+			// Users: users, // aquí puedes cambiar Users a []*pb.UserSanitizer o mapear si quieres tu modelo interno
 		})
 	}
 
