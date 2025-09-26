@@ -1,7 +1,8 @@
 services:
-  service1:
+  
+  server:
     build:
-      context: ./Services1
+      context: ./Server
       dockerfile: ./build/dockerfile
     volumes:
       - ./test/B/.env:/app/config/.env:ro
@@ -22,9 +23,9 @@ services:
     depends_on:
       - postgres-zfut
 
-  service2:
+  client:
       build:
-        context: ./Services2
+        context: ./Client
         dockerfile: ./build/dockerfile
       volumes:
         - ./test/B/.env:/app/config/.env:ro
