@@ -2,7 +2,7 @@ services:
   
   server:
     build:
-      context: ./Server
+      context: .
       dockerfile: ./build/dockerfile
     volumes:
       - ./test/.env:/app/config/.env:ro
@@ -22,29 +22,6 @@ services:
       - red-principal
     depends_on:
       - postgres-zfut
-
-  client:
-      build:
-        context: ./Client
-        dockerfile: ./build/dockerfile
-      volumes:
-        - ./test/.env:/app/config/.env:ro
-        - ./test/private_key.pem:/app/config/private_key.pem:ro
-        - ./test/public_key.pem:/app/config/public_key.pem:ro
-        - ./test/db/respaldos:/app/db/respaldos
-        - ./test/db/exports:/app/db/exports
-        - ./test/db/estado_inicial.sql:/app/db/estado_inicial.sql
-        - ./test/db/files/uploads:/app/files/uploads
-      ports:
-        - "81:8080"
-        - "50052:50051"
-      restart: always
-      expose:
-        - "50051"
-      networks:
-        - red-principal
-      depends_on:
-        - postgres-zfut
 
   postgres-zfut:
     container_name: postgres-zfut
