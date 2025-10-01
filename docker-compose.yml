@@ -8,10 +8,6 @@ services:
       - ./test/.env:/app/config/.env:ro
       - ./test/private_key.pem:/app/config/private_key.pem:ro
       - ./test/public_key.pem:/app/config/public_key.pem:ro
-      - ./test/db/respaldos:/app/db/respaldos
-      - ./test/db/exports:/app/db/exports
-      - ./test/db/estado_inicial.sql:/app/db/estado_inicial.sql
-      - ./test/files/uploads:/app/files/uploads
     ports:
       - "80:8080"
       - "50051:50051"
