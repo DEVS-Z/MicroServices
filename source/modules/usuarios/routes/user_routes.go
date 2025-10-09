@@ -1,22 +1,15 @@
-package roles
+package routes
 
 import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
-	roles_model "main/source/modules/roles/model"
+	user_model "main/source/modules/usuarios/model"
 
 	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
-var Service = base_service.NewService[base_service.Default[roles_model.RolesStruct]](*roles_model.Model)
-
-func Init() {
-	print("Roles Module Initialized\n")
-	InitRoutes()
-}
-
-func InitRoutes() {
-	var r = router.NewRoute("/roles")
+func InitRoutes(Service base_service.Default[user_model.UsuariosStruct]) {
+	var r = router.NewRoute("/usuarios")
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)

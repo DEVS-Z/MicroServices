@@ -1,22 +1,22 @@
-package roles
+package signos_vitales
 
 import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
-	roles_model "main/source/modules/roles/model"
+	signos_vitales_model "main/source/modules/signos_vitales/model"
 
 	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
-var Service = base_service.NewService[base_service.Default[roles_model.RolesStruct]](*roles_model.Model)
+var Service = base_service.NewService[base_service.Default[signos_vitales_model.Signos_vitalesStruct]](*signos_vitales_model.Model)
 
 func Init() {
-	print("Roles Module Initialized\n")
+	print("Signos_vitales Module Initialized\n")
 	InitRoutes()
 }
 
 func InitRoutes() {
-	var r = router.NewRoute("/roles")
+	var r = router.NewRoute("/signos_vitales")
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)

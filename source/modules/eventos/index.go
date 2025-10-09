@@ -1,22 +1,22 @@
-package roles
+package eventos
 
 import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
-	roles_model "main/source/modules/roles/model"
+	eventos_model "main/source/modules/eventos/model"
 
 	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
-var Service = base_service.NewService[base_service.Default[roles_model.RolesStruct]](*roles_model.Model)
+var Service = base_service.NewService[base_service.Default[eventos_model.EventosStruct]](*eventos_model.Model)
 
 func Init() {
-	print("Roles Module Initialized\n")
+	print("Eventos Module Initialized\n")
 	InitRoutes()
 }
 
 func InitRoutes() {
-	var r = router.NewRoute("/roles")
+	var r = router.NewRoute("/eventos")
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)

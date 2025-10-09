@@ -3,8 +3,7 @@ package auth
 import (
 	"errors"
 	key "main/core/security/token"
-	user_model "main/source/modules/users/models"
-	user_service "main/source/modules/users/services"
+	user "main/source/modules/usuarios"
 
 	"github.com/miqueaz/FrameGo/pkg/crypto"
 )
@@ -24,7 +23,7 @@ func SignIn(crudo map[string]any) (string, error) {
 		password: crudo["password"].(string),
 	}
 
-	users, err := user_service.Service.Service.Read(map[string]any{"Matricula": body.username})
+	users, err := user.Service.Service.Read(map[string]any{"Matricula": body.username})
 	if len(users) <= 0 {
 		return "", errors.New("user not found")
 	}
@@ -39,11 +38,11 @@ func SignIn(crudo map[string]any) (string, error) {
 	// 	return "", errors.New("invalid password")
 	// }
 
-	if user.Contrasena != body.password {
+	if *user.Password != body.password {
 		return "", errors.New("invalid password")
 	}
 
-	token, err := key.GenerateJWT(user)
+	token, err := key.GenerateJWT(*user.Nombre, *user.RolId, *user.UserId)
 	if err != nil {
 		return "", err
 	}
@@ -58,20 +57,19 @@ func SignUp(username string, email string, password string) (string, error) {
 		return "", err
 	}
 
-	user, err := user_service.Service.Insert(user_model.UserStruct{
-		PrimerNombre:    username,
-		SegundoNombre:   nil,
-		PrimerApellido:  username,
-		SegundoApellido: nil,
-		Matricula:       username,
-		Correo:          email,
-		Contrasena:      hashedPassword,
-		Rol:             1, // Assuming 1 is the default role for new users
+	user, err := user.Service.Insert(user.Model{
+		UserId:        nil,
+		Nombre:        &username,
+		Correo:        &email,
+		Password:      &hashedPassword,
+		FechaRegistro: nil,
+		Estado:        nil,
+		RolId:         nil,
 	})
 
 	if err != nil {
 		return "", err
 	}
 
-	return user.Matricula, nil
+	return *user.Nombre, nil
 }

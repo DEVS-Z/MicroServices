@@ -3,22 +3,21 @@ package token
 import (
 	"errors"
 	"main/core/security/key"
-	user_model "main/source/modules/users/models"
 	"strings"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-func GenerateJWT(user user_model.UserStruct) (string, error) {
+func GenerateJWT(nombre string, role int, userId int) (string, error) {
 	privateKey, err := key.LoadPrivateKey()
 	if err != nil {
 		return "", err
 	}
 	claims := jwt.MapClaims{
-		"username": user.Matricula,
-		"role":     user.Rol,
-		"id":       user.ID,
+		"username": nombre,
+		"role":     role,
+		"id":       userId,
 		"exp":      jwt.NewNumericDate(time.Now().Add(120 * time.Minute)),
 	}
 

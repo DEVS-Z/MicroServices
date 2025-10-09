@@ -1,22 +1,22 @@
-package roles
+package actividades
 
 import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
-	roles_model "main/source/modules/roles/model"
+	actividades_model "main/source/modules/actividades/model"
 
 	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
-var Service = base_service.NewService[base_service.Default[roles_model.RolesStruct]](*roles_model.Model)
+var Service = base_service.NewService[base_service.Default[actividades_model.ActividadesStruct]](*actividades_model.Model)
 
 func Init() {
-	print("Roles Module Initialized\n")
+	print("Actividades Module Initialized\n")
 	InitRoutes()
 }
 
 func InitRoutes() {
-	var r = router.NewRoute("/roles")
+	var r = router.NewRoute("/actividades")
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)
