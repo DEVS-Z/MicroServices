@@ -9,7 +9,6 @@ import (
 )
 
 type AuthService struct {
-	username string
 	email    string
 	password string
 }
@@ -18,12 +17,12 @@ func SignIn(crudo map[string]any) (string, error) {
 
 	//Transformar el body a AuthService
 	body := AuthService{
-		username: crudo["username"].(string),
 		email:    crudo["email"].(string),
 		password: crudo["password"].(string),
 	}
 
-	users, err := user.Service.Service.Read(map[string]any{"Matricula": body.username})
+	users, err := user.Service.Read(map[string]any{"correo": body.email})
+
 	if len(users) <= 0 {
 		return "", errors.New("user not found")
 	}

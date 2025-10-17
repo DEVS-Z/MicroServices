@@ -5,7 +5,7 @@ import (
 	grpcmain "main/core/cmd/grpc"
 	restmain "main/core/cmd/rest"
 	"main/core/config"
-	_ "main/core/connection/db/postgres"
+	_ "main/core/connection/db/mysql"
 	"main/source/core"
 
 	modules "github.com/miqueaz/FrameGo/pkg/base/core"

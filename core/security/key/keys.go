@@ -9,7 +9,7 @@ import (
 )
 
 func LoadPrivateKey() (*rsa.PrivateKey, error) {
-	data, err := os.ReadFile("./config/private_key.pem")
+	data, err := os.ReadFile("./core/config/private_key.pem")
 	if err != nil {
 		return nil, err
 	}
@@ -27,7 +27,7 @@ func LoadPrivateKey() (*rsa.PrivateKey, error) {
 }
 
 func LoadPublicKey() (*rsa.PublicKey, error) {
-	data, err := os.ReadFile("./config/public_key.pem")
+	data, err := os.ReadFile("./core/config/public_key.pem")
 	if err != nil {
 		return nil, err
 	}

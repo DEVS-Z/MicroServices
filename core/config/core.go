@@ -15,7 +15,7 @@ func Execute() {
 }
 
 func loadEnvironment() {
-	err := godotenv.Load("./config/.env")
+	err := godotenv.Load("./core/config/.env")
 	if err != nil {
 		log.Fatal("Error to load .env file", err)
 	}

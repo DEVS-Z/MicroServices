@@ -2,9 +2,11 @@ package postgres
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	base_models "github.com/miqueaz/FrameGo/pkg/base/models"
 	ORM "github.com/miqueaz/FrameGo/pkg/sql"
@@ -13,11 +15,11 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var DB = Init()
+var DB = PostgreSQL()
 
-func Init() *sql.DB {
+func PostgreSQL() *sql.DB {
 	var err error
-	godotenv.Load("./config/.env")
+	godotenv.Load("./core/config/.env")
 	connection := ORM.Connection{
 		Host:     os.Getenv("HOST_DB_POSTGRES"),
 		Port:     os.Getenv("PORT_DB_POSTGRES"),
@@ -37,6 +39,33 @@ func Init() *sql.DB {
 	}
 
 	println("Conexión a PostgreSQL exitosa")
+	ListTables(DB)
 	return DB
 
+}
+
+func ListTables(db *sql.DB) {
+	query := `
+        SELECT table_schema, table_name
+        FROM information_schema.tables
+        WHERE table_type='BASE TABLE'
+        AND table_schema NOT IN ('pg_catalog', 'information_schema')
+        ORDER BY table_schema, table_name;
+    `
+
+	rows, err := db.Query(query)
+	if err != nil {
+		log.Fatalf("Error listando tablas: %v", err)
+	}
+	defer rows.Close()
+
+	fmt.Println("📋 Tablas en la base de datos:")
+	for rows.Next() {
+		var schema, name string
+		err := rows.Scan(&schema, &name)
+		if err != nil {
+			log.Fatalf("Error leyendo fila: %v", err)
+		}
+		fmt.Printf("- %s.%s\n", schema, name)
+	}
 }

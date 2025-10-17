@@ -1,0 +1,13 @@
+# Configuración básica de air
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go run main.go"
+  bin = ""
+  include_ext = ["go"]
+  exclude_dir = ["vendor", "tmp", "test"]
+
+
+[color]
+  main = "cyan"

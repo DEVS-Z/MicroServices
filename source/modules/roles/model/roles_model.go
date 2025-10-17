@@ -6,8 +6,8 @@ import (
 )
 
 type RolesStruct struct {
-	RolId *int `db:"rol_id" sanitizer:"id" visible:"false"`
+	RolId  *int    `db:"rol_id" sanitizer:"id" visible:"false"`
 	Nombre *string `db:"nombre"`
 }
 
-var Model = base_models.NewModel[RolesStruct]("roles", "roles")
+var Model = base_models.NewModel[RolesStruct]("roles", "zfut.roles")

@@ -15,4 +15,4 @@ type UsuariosStruct struct {
 	RolId         *int    `db:"rol_id" sanitizer:"id" visible:"false"`
 }
 
-var Model = base_models.NewModel[UsuariosStruct]("usuarios", "usuarios")
+var Model = base_models.NewModel[UsuariosStruct]("usuarios", "zfut.usuarios")

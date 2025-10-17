@@ -39,10 +39,11 @@ public_key.pem
 build-test/DB/data
 build-test/B/db/exports
 build-test/B/db/respaldos
-test/DB/data
+test/db/data
+test/db/exports
+test/db/respaldos
+test/db/mariadb
 test/B/db/data
-test/B/db/exports
-test/B/db/respaldos
 build/test/mailer/QubeFlex.png
 build/test/mailer/index.js
 build/test/mailer/Dockerfile
@@ -55,3 +56,4 @@ build-test/mailer/Dockerfile
 build-test/docker-compose.yml
 build-test/DB/b.sql
 build-test/B/db/estado_inicial.sql
+test/

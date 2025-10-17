@@ -3,11 +3,12 @@ services:
   server:
     build:
       context: .
-      dockerfile: ./build/dockerfile
+      dockerfile: ./build/Dockerfile.dev # Cambiar a Dockerfile para produccion
     volumes:
-      - ./test/.env:/app/config/.env:ro
-      - ./test/private_key.pem:/app/config/private_key.pem:ro
-      - ./test/public_key.pem:/app/config/public_key.pem:ro
+      - ./:/app # Montar todo el proyecto para desarrollo, quitar para produccion
+      - ./test/.env:/app/core/config/.env:ro
+      - ./test/private_key.pem:/app/core/config/private_key.pem:ro
+      - ./test/public_key.pem:/app/core/config/public_key.pem:ro
     ports:
       - "80:8080"
       - "50051:50051"
@@ -25,16 +26,35 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: DarthMonkus117
-      POSTGRES_DB: droply
+      POSTGRES_DB: zfut
     volumes:
       - ./test/db/data:/var/lib/postgresql/data
-      - ./test/db/b.sql:/docker-entrypoint-initdb.d/backup.sql:ro
+      - ./schema.sql:/docker-entrypoint-initdb.d/backup.sql:ro
     expose:
       - "5432"
     ports:
-      - "5432:5432"
+      - "5431:5432"
     networks:
       - red-principal
+
+  mariadb-zfut:
+      container_name: mariadb-zfut
+      image: mariadb:11.1
+      environment:
+        MYSQL_ROOT_PASSWORD: DarthMonkus117
+        MYSQL_DATABASE: zfut
+        MYSQL_USER: zfutuser
+        MYSQL_PASSWORD: zfutpass
+      volumes:
+        - ./test/db/mariadb:/var/lib/mysql
+        - ./schema_mariadb.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      expose:
+        - "3306"
+      ports:
+        - "3307:3306"
+      networks:
+        - red-principal
+      command: --default-authentication-plugin=mysql_native_password
 
 networks:
   red-principal:

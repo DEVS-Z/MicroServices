@@ -6,11 +6,11 @@ import (
 )
 
 type ClubsStruct struct {
-	ClubId *int `db:"club_id" sanitizer:"id" visible:"false"`
-	Nombre *string `db:"nombre"`
-	Pais *string `db:"pais"`
+	ClubId        *int    `db:"club_id" sanitizer:"id" visible:"false"`
+	Nombre        *string `db:"nombre"`
+	Pais          *string `db:"pais"`
 	FechaRegistro *string `db:"fecha_registro"`
-	OwnerId *int `db:"owner_id" sanitizer:"id" visible:"false"`
+	OwnerId       *int    `db:"owner_id" sanitizer:"id" visible:"false"`
 }
 
-var Model = base_models.NewModel[ClubsStruct]("clubs", "clubs")
+var Model = base_models.NewModel[ClubsStruct]("clubs", "zfut.clubs")

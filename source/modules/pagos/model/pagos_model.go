@@ -6,10 +6,10 @@ import (
 )
 
 type PagosStruct struct {
-	PagoId *int `db:"pago_id" sanitizer:"id" visible:"false"`
-	ClubSubsId *int `db:"club_subs_id" sanitizer:"id" visible:"false"`
+	PagoId      *int     `db:"pago_id" sanitizer:"id" visible:"false"`
+	ClubSubsId  *int     `db:"club_subs_id" sanitizer:"id" visible:"false"`
 	TotalPagado *float64 `db:"total_pagado"`
-	FechaPago *string `db:"fecha_pago"`
+	FechaPago   *string  `db:"fecha_pago"`
 }
 
-var Model = base_models.NewModel[PagosStruct]("pagos", "pagos")
+var Model = base_models.NewModel[PagosStruct]("pagos", "zfut.pagos")
