@@ -4,7 +4,6 @@ import (
 	"fmt"
 	grpcmain "main/core/cmd/grpc"
 	restmain "main/core/cmd/rest"
-	"main/core/config"
 	_ "main/core/connection/db/mysql"
 	"main/source/core"
 
@@ -14,7 +13,6 @@ import (
 func main() {
 	// Ejecutar REST en goroutine
 	fmt.Println("Iniciando servicio...")
-	config.Execute()
 	core.Init()
 	modules.Execute()
 
