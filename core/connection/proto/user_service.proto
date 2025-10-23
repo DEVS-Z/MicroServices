@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package user_service;
+
+option go_package = "../services/user_service";
+
+// ======================
+// Mensajes
+// ======================
+
+message User {
+  int32 id = 1;
+  string primer_nombre = 2;
+  string segundo_nombre = 3;   // puede ser opcional
+  string primer_apellido = 4;
+  string segundo_apellido = 5; // puede ser opcional
+  string matricula = 6;
+  string correo = 7;
+  string contrasena = 8; // solo usado internamente
+  int32 rol = 9;         // ID de rol
+}
+
+message UserSanitizer {
+  int32 id = 1;
+  string primer_nombre = 2;
+  string segundo_nombre = 3;
+  string primer_apellido = 4;
+  string segundo_apellido = 5;
+  string matricula = 6;
+  string correo = 7;
+  string rol = 8;  // nombre del rol en texto
+}
+
+// Peticiones
+message UserIdRequest {
+  int32 id = 1;
+}
+
+message UserFilterRequest {
+  map<string, string> filters = 1;
+}
+
+message CreateUserRequest {
+  string primer_nombre = 1;
+  string segundo_nombre = 2;
+  string primer_apellido = 3;
+  string segundo_apellido = 4;
+  string matricula = 5;
+  string correo = 6;
+  int32 rol = 7;
+}
+
+message UpdateUserRequest {
+  int32 id = 1;
+  string primer_nombre = 2;
+  string segundo_nombre = 3;
+  string primer_apellido = 4;
+  string segundo_apellido = 5;
+  string matricula = 6;
+  string correo = 7;
+  int32 rol = 8;
+}
+
+message DeleteUserRequest {
+  int32 id = 1;
+}
+
+// Respuestas
+message UserListResponse {
+  repeated UserSanitizer users = 1;
+}
+
+message UserResponse {
+  UserSanitizer user = 1;
+}
+
+message Empty {}
+
+
+// ======================
+// Servicio
+// ======================
+service UserService {
+  rpc Read(UserFilterRequest) returns (UserListResponse);
+  rpc ReadOne(UserIdRequest) returns (UserResponse);
+  rpc Insert(CreateUserRequest) returns (UserResponse);
+  rpc Update(UpdateUserRequest) returns (UserResponse);
+  rpc Delete(DeleteUserRequest) returns (Empty);
+}
