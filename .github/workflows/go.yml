@@ -18,7 +18,7 @@ jobs:
         run: |
           VERSION=$(git log -1 --pretty=%B | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+')
           if [ -z "$VERSION" ]; then
-            echo "No se encontró versión en el commit, usando 'latest' por defecto "
+            echo "No se encontró versión en el commit, usando 'latest' por defecto"
             VERSION="latest"
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
@@ -41,7 +41,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/zfut/microservices:latest
-            ghcr.io/zfut/microservices:${{ steps.get_version.outputs.version }}
+            ghcr.io/dev-z/microservices:latest
+            ghcr.io/dev-z/microservices:${{ steps.get_version.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
