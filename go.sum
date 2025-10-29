@@ -82,6 +82,8 @@ github.com/miqueaz/FrameGo v0.0.0-20251017031033-095537db2819 h1:28JgsUQ0FEiajcR
 github.com/miqueaz/FrameGo v0.0.0-20251017031033-095537db2819/go.mod h1:xFFlGpQCQwYI1FOqaRuIaFRqcwk+o//L0rbLbGbxFrA=
 github.com/miqueaz/FrameGo v0.0.0-20251017045558-3fde357fa18d h1:KQwjyRjRlzzmm9/wMlcgaZsVfYOCZl9OitEW9rUPk5Y=
 github.com/miqueaz/FrameGo v0.0.0-20251017045558-3fde357fa18d/go.mod h1:xFFlGpQCQwYI1FOqaRuIaFRqcwk+o//L0rbLbGbxFrA=
+github.com/miqueaz/FrameGo v0.0.0-20251029033521-68d84aac9efe h1:jxj6GkUpgZ/en8X3KAGCPSOXUhUPLd7AbZHiu4WT6AE=
+github.com/miqueaz/FrameGo v0.0.0-20251029033521-68d84aac9efe/go.mod h1:xFFlGpQCQwYI1FOqaRuIaFRqcwk+o//L0rbLbGbxFrA=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd h1:TRLaZ9cD/w8PVh93nsPXa1VrQ6jlwL5oN8l14QlcNfg=
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
