@@ -6,13 +6,13 @@ import (
 )
 
 type UsuariosStruct struct {
-	UserId        *int    `db:"user_id" sanitizer:"id" visible:"false"`
+	UserId        *int    `db:"user_id" sanitizer:"id" visible:"false" type:"pk"`
 	Nombre        *string `db:"nombre"`
 	Correo        *string `db:"correo"`
 	Password      *string `db:"password"`
 	FechaRegistro *string `db:"fecha_registro"`
 	Estado        *string `db:"estado"`
-	RolId         *int    `db:"rol_id" sanitizer:"id" visible:"false"`
+	RolId         *int    `db:"rol_id" visible:"false"`
 }
 
 var Model = base_models.NewModel[UsuariosStruct]("usuarios", "zfut.usuarios")

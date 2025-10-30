@@ -6,7 +6,7 @@ import (
 )
 
 type SuscripcionesStruct struct {
-	SuscripcionId *int     `db:"suscripcion_id" sanitizer:"id" visible:"false"`
+	SuscripcionId *int     `db:"suscripcion_id" sanitizer:"id" visible:"false" type: "pk"`
 	Nombre        *string  `db:"nombre"`
 	Precio        *float64 `db:"precio"`
 	CantPlayers   *int     `db:"cant_players"`

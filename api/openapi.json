@@ -1,0 +1,2411 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Rest Server API",
+    "version": "1.0.0",
+    "description": "Documentación generada automáticamente a partir de la colección Postman."
+  },
+  "servers": [
+    {
+      "url": "https://api.tuservidor.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Actividades": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Alertas": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Asignacion_rutinas": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Club_suscripcion": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Clubs": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Ejercicios": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Equipos": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Eventos": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Miembros": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Pagos": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Reportes": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Roles": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Rutinas": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Signos_vitales": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Suscripciones": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Usuarios": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "integer",
+            "example": 0
+          },
+          "Campo1": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo2": {
+            "type": "string",
+            "example": ""
+          },
+          "Campo3": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/actividades": {
+      "get": {
+        "summary": "Obtener todos los actividades",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo actividades",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Actividades"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/actividades/{id}": {
+      "get": {
+        "summary": "Obtener actividades por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar actividades",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Actividades"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar actividades",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/alertas": {
+      "get": {
+        "summary": "Obtener todos los alertas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo alertas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alertas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/alertas/{id}": {
+      "get": {
+        "summary": "Obtener alertas por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar alertas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Alertas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar alertas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/asignacion_rutinas": {
+      "get": {
+        "summary": "Obtener todos los asignacion_rutinas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo asignacion_rutinas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asignacion_rutinas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/asignacion_rutinas/{id}": {
+      "get": {
+        "summary": "Obtener asignacion_rutinas por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar asignacion_rutinas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asignacion_rutinas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar asignacion_rutinas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/auth": {
+      "get": {
+        "summary": "Obtener todos los auth",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo auth",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/auth/{id}": {
+      "get": {
+        "summary": "Obtener auth por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar auth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar auth",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/club_suscripcion": {
+      "get": {
+        "summary": "Obtener todos los club_suscripcion",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo club_suscripcion",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Club_suscripcion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/club_suscripcion/{id}": {
+      "get": {
+        "summary": "Obtener club_suscripcion por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar club_suscripcion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Club_suscripcion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar club_suscripcion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/clubs": {
+      "get": {
+        "summary": "Obtener todos los clubs",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo clubs",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Clubs"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/clubs/{id}": {
+      "get": {
+        "summary": "Obtener clubs por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar clubs",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Clubs"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar clubs",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/ejercicios": {
+      "get": {
+        "summary": "Obtener todos los ejercicios",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo ejercicios",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ejercicios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/ejercicios/{id}": {
+      "get": {
+        "summary": "Obtener ejercicios por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar ejercicios",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ejercicios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar ejercicios",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/equipos": {
+      "get": {
+        "summary": "Obtener todos los equipos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo equipos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Equipos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/equipos/{id}": {
+      "get": {
+        "summary": "Obtener equipos por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar equipos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Equipos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar equipos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/eventos": {
+      "get": {
+        "summary": "Obtener todos los eventos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo eventos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/eventos/{id}": {
+      "get": {
+        "summary": "Obtener eventos por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar eventos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar eventos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/miembros": {
+      "get": {
+        "summary": "Obtener todos los miembros",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo miembros",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Miembros"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/miembros/{id}": {
+      "get": {
+        "summary": "Obtener miembros por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar miembros",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Miembros"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar miembros",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/pagos": {
+      "get": {
+        "summary": "Obtener todos los pagos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo pagos",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pagos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/pagos/{id}": {
+      "get": {
+        "summary": "Obtener pagos por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar pagos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pagos"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar pagos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/reportes": {
+      "get": {
+        "summary": "Obtener todos los reportes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo reportes",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reportes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/reportes/{id}": {
+      "get": {
+        "summary": "Obtener reportes por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar reportes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reportes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar reportes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "summary": "Obtener todos los roles",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo roles",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Roles"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/roles/{id}": {
+      "get": {
+        "summary": "Obtener roles por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar roles",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Roles"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar roles",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/rutinas": {
+      "get": {
+        "summary": "Obtener todos los rutinas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo rutinas",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rutinas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/rutinas/{id}": {
+      "get": {
+        "summary": "Obtener rutinas por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar rutinas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rutinas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar rutinas",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/signos_vitales": {
+      "get": {
+        "summary": "Obtener todos los signos_vitales",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo signos_vitales",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Signos_vitales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/signos_vitales/{id}": {
+      "get": {
+        "summary": "Obtener signos_vitales por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar signos_vitales",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Signos_vitales"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar signos_vitales",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/suscripciones": {
+      "get": {
+        "summary": "Obtener todos los suscripciones",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo suscripciones",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Suscripciones"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/suscripciones/{id}": {
+      "get": {
+        "summary": "Obtener suscripciones por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar suscripciones",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Suscripciones"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar suscripciones",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    },
+    "/usuarios": {
+      "get": {
+        "summary": "Obtener todos los usuarios",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de elementos obtenida exitosamente"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear nuevo usuarios",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuarios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Elemento creado exitosamente"
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "get": {
+        "summary": "Obtener usuarios por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Elemento obtenido exitosamente"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar usuarios",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Usuarios"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Elemento actualizado exitosamente"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar usuarios",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Elemento eliminado exitosamente"
+          }
+        }
+      }
+    }
+  }
+}

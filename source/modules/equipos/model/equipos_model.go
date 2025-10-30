@@ -6,7 +6,7 @@ import (
 )
 
 type EquiposStruct struct {
-	EquipoId      *int    `db:"equipo_id" sanitizer:"id" visible:"false"`
+	EquipoId      *int    `db:"equipo_id" sanitizer:"id" visible:"false" type: "pk"`
 	ClubId        *int    `db:"club_id" sanitizer:"id" visible:"false"`
 	Nombre        *string `db:"nombre"`
 	Categoria     *string `db:"categoria"`

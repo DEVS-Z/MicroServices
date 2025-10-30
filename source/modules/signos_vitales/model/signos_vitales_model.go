@@ -6,7 +6,7 @@ import (
 )
 
 type Signos_vitalesStruct struct {
-	SignosId      *int     `db:"signos_id" sanitizer:"id" visible:"false"`
+	SignosId      *int     `db:"signos_id" sanitizer:"id" visible:"false" type: "pk"`
 	ActividadId   *int     `db:"actividad_id" sanitizer:"id" visible:"false"`
 	FechaRegistro *string  `db:"fecha_registro"`
 	Metrica       *string  `db:"metrica"`

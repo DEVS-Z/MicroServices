@@ -23,4 +23,4 @@ EXPOSE 8080
 EXPOSE 50051
 
 # Comando para desarrollo con hot reload
-CMD ["air", "-c", ".air.toml"]
+CMD ["air", "-c", "build/.air.toml"]

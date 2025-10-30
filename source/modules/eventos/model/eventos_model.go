@@ -6,7 +6,7 @@ import (
 )
 
 type EventosStruct struct {
-	EventoId     *int    `db:"evento_id" sanitizer:"id" visible:"false"`
+	EventoId     *int    `db:"evento_id" sanitizer:"id" visible:"false" type: "pk"`
 	EquipoId     *int    `db:"equipo_id" sanitizer:"id" visible:"false"`
 	CreadoPorId  *int    `db:"creado_por_id" sanitizer:"id" visible:"false"`
 	TituloEvento *string `db:"titulo_evento"`

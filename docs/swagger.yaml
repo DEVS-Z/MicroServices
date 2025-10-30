@@ -1,0 +1,32 @@
+definitions:
+  auth.AuthService:
+    type: object
+info:
+  contact: {}
+paths:
+  /auth/sign-in:
+    post:
+      consumes:
+      - application/json
+      description: Inicia sesión de un usuario
+      parameters:
+      - description: Datos del usuario a crear
+        in: body
+        name: authService
+        required: true
+        schema:
+          $ref: '#/definitions/auth.AuthService'
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: Token de acceso generado exitosamente
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Inicia Sesion
+      tags:
+      - Auth
+swagger: "2.0"

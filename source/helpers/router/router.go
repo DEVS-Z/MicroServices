@@ -1,9 +1,13 @@
 package router
 
 import (
-	"github.com/miqueaz/FrameGo/pkg/base/router"
+	_ "main/docs"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+	"github.com/miqueaz/FrameGo/pkg/base/router"
+	files "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 var rout = router.Router()
@@ -24,5 +28,10 @@ func init() {
 		AllowHeaders:     []string{"*"},
 		AllowCredentials: true,
 	}))
+	rout.GET("/", func(c *gin.Context) {
+		//Redirecciona a swagger
+		c.Redirect(302, "/swagger/index.html")
+	})
+	rout.GET("/swagger/*any", ginSwagger.WrapHandler(files.Handler))
 
 }

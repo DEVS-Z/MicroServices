@@ -29,11 +29,13 @@ func MySQL() *sql.DB {
 	println("Conectando a la base de datos MySQL...", connection.Host)
 	DB, err := ORM.InitMySQL(connection)
 	if err != nil || DB == nil {
-		log.Fatalf("Error inicializando MySQL: %v", err)
+		log.Printf("Error inicializando MySQL: %v", err)
+		return nil
 	}
 	base_models.SetDB(sqlx.NewDb(DB, "mysql"))
 	if DB == nil {
-		log.Fatal("Error: La conexión a la base de datos MySQL no se ha inicializado." + err.Error())
+		log.Print("Error: La conexión a la base de datos MySQL no se ha inicializado." + err.Error())
+		return nil
 	}
 
 	println("Conexión a MySQL exitosa")

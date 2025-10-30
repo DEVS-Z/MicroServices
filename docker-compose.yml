@@ -6,9 +6,9 @@ services:
       dockerfile: ./build/Dockerfile.dev # Cambiar a Dockerfile para produccion
     volumes:
       - ./:/app # Montar todo el proyecto para desarrollo, quitar para produccion
-      - ./test/.env:/app/core/config/.env:ro
-      - ./test/private_key.pem:/app/core/config/private_key.pem:ro
-      - ./test/public_key.pem:/app/core/config/public_key.pem:ro
+      - ./core/config/.env:/app/core/config/.env:ro
+      - ./core/config/private_key.pem:/app/core/config/private_key.pem:ro
+      - ./core/config/public_key.pem:/app/core/config/public_key.pem:ro
     ports:
       - "80:8080"
       - "50051:50051"
@@ -46,8 +46,8 @@ services:
         MYSQL_USER: zfutuser
         MYSQL_PASSWORD: zfutpass
       volumes:
-        - ./test/db/mariadb:/var/lib/mysql
-        - ./core/connections/db/mysql/schema_mariadb.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+        - ./core/connection/db/mysql/data:/var/lib/mysql
+        - ./core/connection/db/mysql/schema_mariadb.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       expose:
         - "3306"
       ports:

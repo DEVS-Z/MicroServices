@@ -6,7 +6,7 @@ import (
 )
 
 type MiembrosStruct struct {
-	MiembroId     *int     `db:"miembro_id" sanitizer:"id" visible:"false"`
+	MiembroId     *int     `db:"miembro_id" sanitizer:"id" visible:"false" type: "pk"`
 	Posicion      *string  `db:"posicion"`
 	WeareableId   *string  `db:"weareable_id" sanitizer:"id" visible:"false"`
 	FechaRegistro *string  `db:"fecha_registro"`
