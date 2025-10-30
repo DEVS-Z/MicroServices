@@ -23,7 +23,7 @@ import (
 )
 
 func Init() {
-	// Aquí se inicializan los módulos
+	// Aquí se inicializan los módulos de la aplicación
 
 	modules.NewModule(roles.Init)
 
