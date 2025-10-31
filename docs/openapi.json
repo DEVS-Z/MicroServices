@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Rest Server API",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Documentación generada a partir de la colección Postman."
   },
   "servers": [

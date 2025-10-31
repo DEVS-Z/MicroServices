@@ -2,91 +2,35 @@
 package docs
 
 import (
+	_ "embed"
 	"log"
-	"os"
 
 	"github.com/swaggo/swag"
 )
 
-const docTemplate = `{
-    "schemes": {{ marshal .Schemes }},
-    "swagger": "2.0",
-    "info": {
-        "description": "{{escape .Description}}",
-        "title": "{{.Title}}",
-        "contact": {},
-        "version": "{{.Version}}"
-    },
-    "host": "{{.Host}}",
-    "basePath": "{{.BasePath}}",
-    "paths": {
-        "/auth/sign-in": {
-            "post": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Inicia sesión de un usuario",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json",
-                    "application/json"
-                ],
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Inicia Sesion",
-                "parameters": [
-                    {
-                        "description": "Datos del usuario a crear",
-                        "name": "authService",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/auth.AuthService"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Token de acceso generado exitosamente",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "auth.AuthService": {
-            "type": "object"
-        }
-    }
-}`
+//go:embed openapi.json
+var embeddedDoc string
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
-	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Version:     "",
+	Host:        "",
+	BasePath:    "",
+	Schemes:     []string{},
+	Title:       "",
+	Description: "",
+	// ... (el resto de tus campos de SwaggerInfo) ...
+	
 	InfoInstanceName: "swagger",
-	SwaggerTemplate:  docTemplate,
+	SwaggerTemplate:  embeddedDoc, // 5. Asigna la variable aquí
 	LeftDelim:        "{{",
 	RightDelim:       "}}",
 }
 
+
+
 func init() {
-    contenidoBytes, err := os.ReadFile("./docs/openapi.json")
-	if err == nil {
-        SwaggerInfo.SwaggerTemplate = string(contenidoBytes)
-        swag.Register(SwaggerInfo.InstanceName(), SwaggerInfo)
-    }
-    log.Print("Error al leer el archivo: %v", err)
+	// Ahora el 'init' solo necesita registrar la variable
+	swag.Register(SwaggerInfo.InstanceName(), SwaggerInfo)
+	log.Print("Documentación Swagger cargada desde archivo incrustado (embed).")
 }
