@@ -5,7 +5,7 @@ import (
 	"main/source/helpers/router"
 )
 
-var version = "1.3.4"
+var version = "1.2.2"
 
 func RunRest() {
 	fmt.Print("\033[H\033[2J")

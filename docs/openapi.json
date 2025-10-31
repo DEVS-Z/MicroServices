@@ -2,12 +2,82 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Rest Server API",
-    "version": "1.0.0",
-    "description": "Documentación generada automáticamente a partir de la colección Postman."
+    "version": "1.2.2",
+    "description": "Documentación generada a partir de la colección Postman."
   },
   "servers": [
     {
-      "url": "https://api.tuservidor.com"
+      "url": "http://54.234.36.199"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Autenticacion",
+      "description": "Operaciones relacionadas con la autenticación"
+    },
+    {
+      "name": "Actividades",
+      "description": "Operaciones relacionadas con actividades"
+    },
+    {
+      "name": "Alertas",
+      "description": "Operaciones relacionadas con alertas"
+    },
+    {
+      "name": "Asignacion_rutinas",
+      "description": "Operaciones relacionadas con asignación de rutinas"
+    },
+    {
+      "name": "Club_suscripcion",
+      "description": "Operaciones relacionadas con la suscripción de clubes"
+    },
+    {
+      "name": "Clubs",
+      "description": "Operaciones relacionadas con clubes"
+    },
+    {
+      "name": "Ejercicios",
+      "description": "Operaciones relacionadas con ejercicios"
+    },
+    {
+      "name": "Equipos",
+      "description": "Operaciones relacionadas con equipos"
+    },
+    {
+      "name": "Eventos",
+      "description": "Operaciones relacionadas con eventos"
+    },
+    {
+      "name": "Miembros",
+      "description": "Operaciones relacionadas con miembros"
+    },
+    {
+      "name": "Pagos",
+      "description": "Operaciones relacionadas con pagos"
+    },
+    {
+      "name": "Reportes",
+      "description": "Operaciones relacionadas con reportes"
+    },
+    {
+      "name": "Roles",
+      "description": "Operaciones relacionadas con roles"
+    },
+    {
+      "name": "Rutinas",
+      "description": "Operaciones relacionadas con rutinas"
+    },
+    {
+      "name": "Signos_vitales",
+      "description": "Operaciones relacionadas con signos vitales"
+    },
+    {
+      "name": "Suscripciones",
+      "description": "Operaciones relacionadas con suscripciones"
+    },
+    {
+      "name": "Usuarios",
+      "description": "Operaciones relacionadas con usuarios"
     }
   ],
   "components": {
@@ -22,370 +92,516 @@
       "Actividades": {
         "type": "object",
         "properties": {
-          "Id": {
+          "ActividadId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "JugadorId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "MiembroId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo3": {
+          "Tipo": {
+            "type": "string"
+          },
+          "FechaInicio": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "FechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Comentarios": {
+            "type": "string"
           }
         }
       },
       "Alertas": {
         "type": "object",
         "properties": {
-          "Id": {
+          "AlertasId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "ActividadId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "Tipo": {
+            "type": "string"
+          },
+          "Descripcion": {
+            "type": "string"
+          },
+          "Gravedad": {
+            "type": "string"
+          },
+          "AtendidoSiNo": {
+            "type": "boolean"
+          },
+          "MiembroId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Asignacion_rutinas": {
         "type": "object",
         "properties": {
-          "Id": {
+          "AsignacionId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
-          },
-          "Campo2": {
-            "type": "string",
-            "example": ""
-          },
-          "Campo3": {
-            "type": "string",
-            "example": ""
-          }
-        }
-      },
-      "Auth": {
-        "type": "object",
-        "properties": {
-          "Id": {
+          "RutinaId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "JugadorId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "EquipoId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo3": {
+          "FechaInicio": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "FechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Frecuencia": {
+            "type": "string"
+          },
+          "Comentarios": {
+            "type": "string"
+          },
+          "RolId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Club_suscripcion": {
         "type": "object",
         "properties": {
-          "Id": {
+          "ClubSubsId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "ClubId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "SuscripcionId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo3": {
+          "OwnerId": {
+            "type": "integer",
+            "nullable": true
+          },
+          "FechaInicio": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "FechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "JugadoresAct": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Clubs": {
         "type": "object",
         "properties": {
-          "Id": {
+          "ClubId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "Nombre": {
+            "type": "string"
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "Pais": {
+            "type": "string"
           },
-          "Campo3": {
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "OwnerId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Ejercicios": {
         "type": "object",
         "properties": {
-          "Id": {
+          "EjercicioId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "RutinaId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "Nombre": {
+            "type": "string"
           },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "Series": {
+            "type": "integer",
+            "nullable": true
+          },
+          "Repeticiones": {
+            "type": "integer",
+            "nullable": true
+          },
+          "DuracionSegs": {
+            "type": "integer",
+            "nullable": true
+          },
+          "Intensidad": {
+            "type": "string"
           }
         }
       },
       "Equipos": {
         "type": "object",
         "properties": {
-          "Id": {
+          "EquipoId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "ClubId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "Nombre": {
+            "type": "string"
           },
-          "Campo3": {
+          "Categoria": {
+            "type": "string"
+          },
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           }
         }
       },
       "Eventos": {
         "type": "object",
         "properties": {
-          "Id": {
+          "EventoId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "EquipoId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "CreadoPorId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo3": {
+          "TituloEvento": {
+            "type": "string"
+          },
+          "FechaInicio": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "FechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Tipo": {
+            "type": "string"
+          },
+          "Comentarios": {
+            "type": "string"
+          },
+          "Lugar": {
+            "type": "string"
           }
         }
       },
       "Miembros": {
         "type": "object",
         "properties": {
-          "Id": {
+          "MiembroId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "Posicion": {
+            "type": "string"
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "WeareableId": {
+            "type": "string"
           },
-          "Campo3": {
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "Altura": {
+            "type": "number",
+            "nullable": true
+          },
+          "Peso": {
+            "type": "number",
+            "nullable": true
+          },
+          "UserId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Pagos": {
         "type": "object",
         "properties": {
-          "Id": {
+          "PagoId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "ClubSubsId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "TotalPagado": {
+            "type": "number",
+            "nullable": true
           },
-          "Campo3": {
+          "FechaPago": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           }
         }
       },
       "Reportes": {
         "type": "object",
         "properties": {
-          "Id": {
+          "ReporteId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "JugadorId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "Tipo": {
+            "type": "string"
+          },
+          "Comentarios": {
+            "type": "string"
           }
         }
       },
       "Roles": {
         "type": "object",
         "properties": {
-          "Id": {
+          "RolId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
-          },
-          "Campo2": {
-            "type": "string",
-            "example": ""
-          },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "Nombre": {
+            "type": "string"
           }
         }
       },
       "Rutinas": {
         "type": "object",
         "properties": {
-          "Id": {
+          "RutinaId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "CreadoPorId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "EquipoId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo3": {
+          "Nombre": {
+            "type": "string"
+          },
+          "Objetivo": {
+            "type": "string"
+          },
+          "NivelDificultad": {
+            "type": "string"
+          },
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           }
         }
       },
       "Signos_vitales": {
         "type": "object",
         "properties": {
-          "Id": {
+          "SignosId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "ActividadId": {
+            "type": "integer",
+            "nullable": true
           },
-          "Campo2": {
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
           },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "Metrica": {
+            "type": "string"
+          },
+          "Valor": {
+            "type": "number",
+            "nullable": true
+          },
+          "UnidadMedida": {
+            "type": "string"
+          },
+          "MiembroId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Suscripciones": {
         "type": "object",
         "properties": {
-          "Id": {
+          "SuscripcionId": {
             "type": "integer",
-            "example": 0
+            "nullable": true
           },
-          "Campo1": {
-            "type": "string",
-            "example": ""
+          "Nombre": {
+            "type": "string"
           },
-          "Campo2": {
-            "type": "string",
-            "example": ""
+          "Precio": {
+            "type": "number",
+            "nullable": true
           },
-          "Campo3": {
-            "type": "string",
-            "example": ""
+          "CantPlayers": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
       "Usuarios": {
         "type": "object",
         "properties": {
-          "Id": {
-            "type": "integer",
-            "example": 0
+          "Nombre": {
+            "type": "string"
           },
-          "Campo1": {
+          "Correo": {
             "type": "string",
-            "example": ""
+            "format": "email"
           },
-          "Campo2": {
+          "Password": {
             "type": "string",
-            "example": ""
+            "format": "password"
           },
-          "Campo3": {
+          "Estado": {
+            "type": "string"
+          },
+          "FechaRegistro": {
             "type": "string",
-            "example": ""
+            "format": "date-time"
+          },
+          "RolId": {
+            "type": "integer"
           }
         }
       }
     }
   },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
-    "/actividades": {
+    "/auth/sign-in": {
+      "post": {
+        "tags": [
+          "Autenticacion"
+        ],
+        "summary": "Autenticar usuario y obtener token JWT",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Autenticación exitosa, token JWT generado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          }
+        }
+      }
+    },
+    "/actividades/": {
       "get": {
+        "tags": [
+          "Actividades"
+        ],
         "summary": "Obtener todos los actividades",
         "security": [
           {
@@ -394,11 +610,24 @@
         ],
         "responses": {
           "200": {
-            "description": "Lista de elementos obtenida exitosamente"
+            "description": "Lista de elementos obtenida exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Actividades"
+                  }
+                }
+              }
+            }
           }
         }
       },
       "post": {
+        "tags": [
+          "Actividades"
+        ],
         "summary": "Crear nuevo actividades",
         "security": [
           {
@@ -424,6 +653,9 @@
     },
     "/actividades/{id}": {
       "get": {
+        "tags": [
+          "Actividades"
+        ],
         "summary": "Obtener actividades por ID",
         "parameters": [
           {
@@ -442,11 +674,21 @@
         ],
         "responses": {
           "200": {
-            "description": "Elemento obtenido exitosamente"
+            "description": "Elemento obtenido exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Actividades"
+                }
+              }
+            }
           }
         }
       },
       "put": {
+        "tags": [
+          "Actividades"
+        ],
         "summary": "Actualizar actividades",
         "parameters": [
           {
@@ -480,6 +722,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Actividades"
+        ],
         "summary": "Eliminar actividades",
         "parameters": [
           {
@@ -503,8 +748,11 @@
         }
       }
     },
-    "/alertas": {
+    "/alertas/": {
       "get": {
+        "tags": [
+          "Alertas"
+        ],
         "summary": "Obtener todos los alertas",
         "security": [
           {
@@ -518,6 +766,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Alertas"
+        ],
         "summary": "Crear nuevo alertas",
         "security": [
           {
@@ -543,6 +794,9 @@
     },
     "/alertas/{id}": {
       "get": {
+        "tags": [
+          "Alertas"
+        ],
         "summary": "Obtener alertas por ID",
         "parameters": [
           {
@@ -566,6 +820,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Alertas"
+        ],
         "summary": "Actualizar alertas",
         "parameters": [
           {
@@ -599,6 +856,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Alertas"
+        ],
         "summary": "Eliminar alertas",
         "parameters": [
           {
@@ -622,8 +882,11 @@
         }
       }
     },
-    "/asignacion_rutinas": {
+    "/asignacion_rutinas/": {
       "get": {
+        "tags": [
+          "Asignacion_rutinas"
+        ],
         "summary": "Obtener todos los asignacion_rutinas",
         "security": [
           {
@@ -637,6 +900,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Asignacion_rutinas"
+        ],
         "summary": "Crear nuevo asignacion_rutinas",
         "security": [
           {
@@ -662,6 +928,9 @@
     },
     "/asignacion_rutinas/{id}": {
       "get": {
+        "tags": [
+          "Asignacion_rutinas"
+        ],
         "summary": "Obtener asignacion_rutinas por ID",
         "parameters": [
           {
@@ -685,6 +954,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Asignacion_rutinas"
+        ],
         "summary": "Actualizar asignacion_rutinas",
         "parameters": [
           {
@@ -718,6 +990,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Asignacion_rutinas"
+        ],
         "summary": "Eliminar asignacion_rutinas",
         "parameters": [
           {
@@ -741,127 +1016,11 @@
         }
       }
     },
-    "/auth": {
+    "/club_suscripcion/": {
       "get": {
-        "summary": "Obtener todos los auth",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+        "tags": [
+          "Club_suscripcion"
         ],
-        "responses": {
-          "200": {
-            "description": "Lista de elementos obtenida exitosamente"
-          }
-        }
-      },
-      "post": {
-        "summary": "Crear nuevo auth",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Auth"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Elemento creado exitosamente"
-          }
-        }
-      }
-    },
-    "/auth/{id}": {
-      "get": {
-        "summary": "Obtener auth por ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Elemento obtenido exitosamente"
-          }
-        }
-      },
-      "put": {
-        "summary": "Actualizar auth",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Auth"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Elemento actualizado exitosamente"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Eliminar auth",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Elemento eliminado exitosamente"
-          }
-        }
-      }
-    },
-    "/club_suscripcion": {
-      "get": {
         "summary": "Obtener todos los club_suscripcion",
         "security": [
           {
@@ -875,6 +1034,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Club_suscripcion"
+        ],
         "summary": "Crear nuevo club_suscripcion",
         "security": [
           {
@@ -900,6 +1062,9 @@
     },
     "/club_suscripcion/{id}": {
       "get": {
+        "tags": [
+          "Club_suscripcion"
+        ],
         "summary": "Obtener club_suscripcion por ID",
         "parameters": [
           {
@@ -923,6 +1088,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Club_suscripcion"
+        ],
         "summary": "Actualizar club_suscripcion",
         "parameters": [
           {
@@ -956,6 +1124,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Club_suscripcion"
+        ],
         "summary": "Eliminar club_suscripcion",
         "parameters": [
           {
@@ -979,8 +1150,11 @@
         }
       }
     },
-    "/clubs": {
+    "/clubs/": {
       "get": {
+        "tags": [
+          "Clubs"
+        ],
         "summary": "Obtener todos los clubs",
         "security": [
           {
@@ -994,6 +1168,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Clubs"
+        ],
         "summary": "Crear nuevo clubs",
         "security": [
           {
@@ -1019,6 +1196,9 @@
     },
     "/clubs/{id}": {
       "get": {
+        "tags": [
+          "Clubs"
+        ],
         "summary": "Obtener clubs por ID",
         "parameters": [
           {
@@ -1042,6 +1222,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Clubs"
+        ],
         "summary": "Actualizar clubs",
         "parameters": [
           {
@@ -1075,6 +1258,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Clubs"
+        ],
         "summary": "Eliminar clubs",
         "parameters": [
           {
@@ -1098,8 +1284,11 @@
         }
       }
     },
-    "/ejercicios": {
+    "/ejercicios/": {
       "get": {
+        "tags": [
+          "Ejercicios"
+        ],
         "summary": "Obtener todos los ejercicios",
         "security": [
           {
@@ -1113,6 +1302,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Ejercicios"
+        ],
         "summary": "Crear nuevo ejercicios",
         "security": [
           {
@@ -1138,6 +1330,9 @@
     },
     "/ejercicios/{id}": {
       "get": {
+        "tags": [
+          "Ejercicios"
+        ],
         "summary": "Obtener ejercicios por ID",
         "parameters": [
           {
@@ -1161,6 +1356,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Ejercicios"
+        ],
         "summary": "Actualizar ejercicios",
         "parameters": [
           {
@@ -1194,6 +1392,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Ejercicios"
+        ],
         "summary": "Eliminar ejercicios",
         "parameters": [
           {
@@ -1217,8 +1418,11 @@
         }
       }
     },
-    "/equipos": {
+    "/equipos/": {
       "get": {
+        "tags": [
+          "Equipos"
+        ],
         "summary": "Obtener todos los equipos",
         "security": [
           {
@@ -1232,6 +1436,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Equipos"
+        ],
         "summary": "Crear nuevo equipos",
         "security": [
           {
@@ -1257,6 +1464,9 @@
     },
     "/equipos/{id}": {
       "get": {
+        "tags": [
+          "Equipos"
+        ],
         "summary": "Obtener equipos por ID",
         "parameters": [
           {
@@ -1280,6 +1490,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Equipos"
+        ],
         "summary": "Actualizar equipos",
         "parameters": [
           {
@@ -1313,6 +1526,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Equipos"
+        ],
         "summary": "Eliminar equipos",
         "parameters": [
           {
@@ -1336,8 +1552,11 @@
         }
       }
     },
-    "/eventos": {
+    "/eventos/": {
       "get": {
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Obtener todos los eventos",
         "security": [
           {
@@ -1351,6 +1570,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Crear nuevo eventos",
         "security": [
           {
@@ -1376,6 +1598,9 @@
     },
     "/eventos/{id}": {
       "get": {
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Obtener eventos por ID",
         "parameters": [
           {
@@ -1399,6 +1624,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Actualizar eventos",
         "parameters": [
           {
@@ -1432,6 +1660,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Eventos"
+        ],
         "summary": "Eliminar eventos",
         "parameters": [
           {
@@ -1455,8 +1686,11 @@
         }
       }
     },
-    "/miembros": {
+    "/miembros/": {
       "get": {
+        "tags": [
+          "Miembros"
+        ],
         "summary": "Obtener todos los miembros",
         "security": [
           {
@@ -1470,6 +1704,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Miembros"
+        ],
         "summary": "Crear nuevo miembros",
         "security": [
           {
@@ -1495,6 +1732,9 @@
     },
     "/miembros/{id}": {
       "get": {
+        "tags": [
+          "Miembros"
+        ],
         "summary": "Obtener miembros por ID",
         "parameters": [
           {
@@ -1518,6 +1758,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Miembros"
+        ],
         "summary": "Actualizar miembros",
         "parameters": [
           {
@@ -1551,6 +1794,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Miembros"
+        ],
         "summary": "Eliminar miembros",
         "parameters": [
           {
@@ -1574,8 +1820,11 @@
         }
       }
     },
-    "/pagos": {
+    "/pagos/": {
       "get": {
+        "tags": [
+          "Pagos"
+        ],
         "summary": "Obtener todos los pagos",
         "security": [
           {
@@ -1589,6 +1838,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Pagos"
+        ],
         "summary": "Crear nuevo pagos",
         "security": [
           {
@@ -1614,6 +1866,9 @@
     },
     "/pagos/{id}": {
       "get": {
+        "tags": [
+          "Pagos"
+        ],
         "summary": "Obtener pagos por ID",
         "parameters": [
           {
@@ -1637,6 +1892,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Pagos"
+        ],
         "summary": "Actualizar pagos",
         "parameters": [
           {
@@ -1670,6 +1928,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Pagos"
+        ],
         "summary": "Eliminar pagos",
         "parameters": [
           {
@@ -1693,8 +1954,11 @@
         }
       }
     },
-    "/reportes": {
+    "/reportes/": {
       "get": {
+        "tags": [
+          "Reportes"
+        ],
         "summary": "Obtener todos los reportes",
         "security": [
           {
@@ -1708,6 +1972,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Reportes"
+        ],
         "summary": "Crear nuevo reportes",
         "security": [
           {
@@ -1733,6 +2000,9 @@
     },
     "/reportes/{id}": {
       "get": {
+        "tags": [
+          "Reportes"
+        ],
         "summary": "Obtener reportes por ID",
         "parameters": [
           {
@@ -1756,6 +2026,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Reportes"
+        ],
         "summary": "Actualizar reportes",
         "parameters": [
           {
@@ -1789,6 +2062,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Reportes"
+        ],
         "summary": "Eliminar reportes",
         "parameters": [
           {
@@ -1812,8 +2088,11 @@
         }
       }
     },
-    "/roles": {
+    "/roles/": {
       "get": {
+        "tags": [
+          "Roles"
+        ],
         "summary": "Obtener todos los roles",
         "security": [
           {
@@ -1827,6 +2106,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Roles"
+        ],
         "summary": "Crear nuevo roles",
         "security": [
           {
@@ -1852,6 +2134,9 @@
     },
     "/roles/{id}": {
       "get": {
+        "tags": [
+          "Roles"
+        ],
         "summary": "Obtener roles por ID",
         "parameters": [
           {
@@ -1875,6 +2160,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Roles"
+        ],
         "summary": "Actualizar roles",
         "parameters": [
           {
@@ -1908,6 +2196,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Roles"
+        ],
         "summary": "Eliminar roles",
         "parameters": [
           {
@@ -1931,8 +2222,11 @@
         }
       }
     },
-    "/rutinas": {
+    "/rutinas/": {
       "get": {
+        "tags": [
+          "Rutinas"
+        ],
         "summary": "Obtener todos los rutinas",
         "security": [
           {
@@ -1946,6 +2240,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Rutinas"
+        ],
         "summary": "Crear nuevo rutinas",
         "security": [
           {
@@ -1971,6 +2268,9 @@
     },
     "/rutinas/{id}": {
       "get": {
+        "tags": [
+          "Rutinas"
+        ],
         "summary": "Obtener rutinas por ID",
         "parameters": [
           {
@@ -1994,6 +2294,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Rutinas"
+        ],
         "summary": "Actualizar rutinas",
         "parameters": [
           {
@@ -2027,6 +2330,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Rutinas"
+        ],
         "summary": "Eliminar rutinas",
         "parameters": [
           {
@@ -2050,8 +2356,11 @@
         }
       }
     },
-    "/signos_vitales": {
+    "/signos_vitales/": {
       "get": {
+        "tags": [
+          "Signos_vitales"
+        ],
         "summary": "Obtener todos los signos_vitales",
         "security": [
           {
@@ -2065,6 +2374,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Signos_vitales"
+        ],
         "summary": "Crear nuevo signos_vitales",
         "security": [
           {
@@ -2090,6 +2402,9 @@
     },
     "/signos_vitales/{id}": {
       "get": {
+        "tags": [
+          "Signos_vitales"
+        ],
         "summary": "Obtener signos_vitales por ID",
         "parameters": [
           {
@@ -2113,6 +2428,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Signos_vitales"
+        ],
         "summary": "Actualizar signos_vitales",
         "parameters": [
           {
@@ -2146,6 +2464,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Signos_vitales"
+        ],
         "summary": "Eliminar signos_vitales",
         "parameters": [
           {
@@ -2169,8 +2490,11 @@
         }
       }
     },
-    "/suscripciones": {
+    "/suscripciones/": {
       "get": {
+        "tags": [
+          "Suscripciones"
+        ],
         "summary": "Obtener todos los suscripciones",
         "security": [
           {
@@ -2184,6 +2508,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Suscripciones"
+        ],
         "summary": "Crear nuevo suscripciones",
         "security": [
           {
@@ -2209,6 +2536,9 @@
     },
     "/suscripciones/{id}": {
       "get": {
+        "tags": [
+          "Suscripciones"
+        ],
         "summary": "Obtener suscripciones por ID",
         "parameters": [
           {
@@ -2232,6 +2562,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Suscripciones"
+        ],
         "summary": "Actualizar suscripciones",
         "parameters": [
           {
@@ -2265,6 +2598,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Suscripciones"
+        ],
         "summary": "Eliminar suscripciones",
         "parameters": [
           {
@@ -2288,8 +2624,11 @@
         }
       }
     },
-    "/usuarios": {
+    "/usuarios/": {
       "get": {
+        "tags": [
+          "Usuarios"
+        ],
         "summary": "Obtener todos los usuarios",
         "security": [
           {
@@ -2303,6 +2642,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Usuarios"
+        ],
         "summary": "Crear nuevo usuarios",
         "security": [
           {
@@ -2328,6 +2670,9 @@
     },
     "/usuarios/{id}": {
       "get": {
+        "tags": [
+          "Usuarios"
+        ],
         "summary": "Obtener usuarios por ID",
         "parameters": [
           {
@@ -2351,6 +2696,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Usuarios"
+        ],
         "summary": "Actualizar usuarios",
         "parameters": [
           {
@@ -2384,6 +2732,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Usuarios"
+        ],
         "summary": "Eliminar usuarios",
         "parameters": [
           {
