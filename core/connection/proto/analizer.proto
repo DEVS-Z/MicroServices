@@ -1,12 +1,12 @@
 syntax = "proto3";
 
+import "google/protobuf/any.proto";
+
 package user;
-option go_package = "ZServer/MicroServices/source/services/users;analyzer";
+option go_package = "../services/user_service/analizer";
 
 message UserData {
-  string name = 1;
-  int32 bpm = 2;
-  string timestamp = 3;
+  google.protobuf.Any payload = 2;
 }
 
 message InsertResponse {

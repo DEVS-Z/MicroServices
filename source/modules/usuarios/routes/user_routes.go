@@ -4,6 +4,7 @@ import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
 	user_service "main/source/modules/usuarios/service"
+	"main/source/services/users/analizer"
 )
 
 func InitRoutes(Service *user_service.ServiceType) {
@@ -14,4 +15,5 @@ func InitRoutes(Service *user_service.ServiceType) {
 	r.GET("/:id", Service.ReadOne)
 	r.PUT("/:id", Service.Update)
 	r.DELETE("/:id", Service.Delete)
+	r.POST("/analizer/", analizer.GetUserName)
 }

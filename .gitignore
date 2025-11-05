@@ -57,3 +57,4 @@ build-test/docker-compose.yml
 build-test/DB/b.sql
 build-test/B/db/estado_inicial.sql
 test/
+.idea/
