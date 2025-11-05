@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package user;
+option go_package = "ZServer/MicroServices/source/services/users;analyzer";
+
+message UserData {
+  string name = 1;
+  int32 bpm = 2;
+  string timestamp = 3;
+}
+
+message InsertResponse {
+  bool ok = 1;
+  string message = 2;
+}
+
+service UserService {
+  rpc InsertUserData (UserData) returns (InsertResponse);
+}
