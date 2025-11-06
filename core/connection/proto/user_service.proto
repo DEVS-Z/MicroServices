@@ -9,31 +9,30 @@ option go_package = "../services/user_service";
 // ======================
 
 message User {
-  int32 id = 1;
-  string primer_nombre = 2;
-  string segundo_nombre = 3;   // puede ser opcional
-  string primer_apellido = 4;
-  string segundo_apellido = 5; // puede ser opcional
-  string matricula = 6;
-  string correo = 7;
-  string contrasena = 8; // solo usado internamente
-  int32 rol = 9;         // ID de rol
+  int32 user_id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string password = 4;
+  string fecha_registro = 5;
+  string estado = 6;
+  int32 rol_id = 7;
 }
 
 message UserSanitizer {
-  int32 id = 1;
-  string primer_nombre = 2;
-  string segundo_nombre = 3;
-  string primer_apellido = 4;
-  string segundo_apellido = 5;
-  string matricula = 6;
-  string correo = 7;
-  string rol = 8;  // nombre del rol en texto
+  int32 user_id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string fecha_registro = 4;
+  string estado = 5;
+  int32 rol_id = 6;
 }
+
+
+
 
 // Peticiones
 message UserIdRequest {
-  int32 id = 1;
+  int32 user_id = 1;
 }
 
 message UserFilterRequest {
@@ -41,28 +40,24 @@ message UserFilterRequest {
 }
 
 message CreateUserRequest {
-  string primer_nombre = 1;
-  string segundo_nombre = 2;
-  string primer_apellido = 3;
-  string segundo_apellido = 4;
-  string matricula = 5;
-  string correo = 6;
-  int32 rol = 7;
+  string nombre = 1;
+  string correo = 2;
+  string password = 3;
+  string estado = 4;
+  int32 rol_id = 5;
 }
 
 message UpdateUserRequest {
-  int32 id = 1;
-  string primer_nombre = 2;
-  string segundo_nombre = 3;
-  string primer_apellido = 4;
-  string segundo_apellido = 5;
-  string matricula = 6;
-  string correo = 7;
-  int32 rol = 8;
+  int32 user_id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string password = 4;
+  string estado = 5;
+  int32 rol_id = 6;
 }
 
 message DeleteUserRequest {
-  int32 id = 1;
+  int32 user_id = 1;
 }
 
 // Respuestas

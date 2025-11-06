@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package user;
+option go_package = "../services/user_service/analizer";
+
+message UserData {
+  google.protobuf.Any payload = 2;
+}
+
+message InsertResponse {
+  bool ok = 1;
+  string message = 2;
+}
+
+service UserService {
+  rpc InsertUserData (UserData) returns (InsertResponse);
+}

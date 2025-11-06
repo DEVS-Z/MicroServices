@@ -2,10 +2,13 @@ package auth
 
 import (
 	"errors"
+	"fmt"
 	key "main/core/security/token"
 	user "main/source/modules/usuarios"
+	"regexp"
+	"time"
 
-	"github.com/miqueaz/FrameGo/pkg/crypto"
+	"github.com/go-sql-driver/mysql"
 )
 
 type AuthService struct {
@@ -13,12 +16,19 @@ type AuthService struct {
 	password string
 }
 
+var getStr = func(m map[string]interface{}, k string) string {
+	if v, ok := m[k].(string); ok {
+		return v
+	}
+	return ""
+}
+
 func SignIn(crudo map[string]any) (string, error) {
 
 	//Transformar el body a AuthService
 	body := AuthService{
-		email:    crudo["email"].(string),
-		password: crudo["password"].(string),
+		email:    getStr(crudo, "email"),
+		password: getStr(crudo, "password"),
 	}
 
 	users, err := user.Service.Read(map[string]any{"correo": body.email})
@@ -49,26 +59,65 @@ func SignIn(crudo map[string]any) (string, error) {
 	return token, nil
 }
 
-func SignUp(username string, email string, password string) (string, error) {
+func SignUp(crudo map[string]any) (string, error) {
 
-	hashedPassword, err := crypto.EncryptPassword(password)
-	if err != nil {
-		return "", err
+	nombre := getStr(crudo, "nombre")
+	correo := getStr(crudo, "email")
+	password := getStr(crudo, "password")
+
+	if nombre == "" || password == "" || correo == "" {
+		return "", errors.New("missing fields")
 	}
 
-	user, err := user.Service.Insert(user.Model{
-		UserId:        nil,
-		Nombre:        &username,
-		Correo:        &email,
-		Password:      &hashedPassword,
-		FechaRegistro: nil,
-		Estado:        nil,
-		RolId:         nil,
+	// hashedPassword, err := crypto.EncryptPassword(password)
+	// if err != nil {
+	// 	return "", err
+	// }
+
+	estado := "activo"
+	rol := 5
+	fechaRegistro := string(time.Now().Format("2006-01-02"))
+
+	_, err := user.Service.Insert(user.Model{
+		Nombre:        &nombre,
+		Correo:        &correo,
+		Password:      &password,
+		FechaRegistro: &fechaRegistro,
+		Estado:        &estado,
+		RolId:         &rol,
 	})
 
 	if err != nil {
-		return "", err
+		return "", HandleDBError(err)
 	}
 
-	return *user.Nombre, nil
+	return "Registro Exitoso", nil
+}
+
+// HandleDBError detecta duplicados y devuelve el campo afectado
+func HandleDBError(err error) error {
+	var mysqlErr *mysql.MySQLError
+	if errors.As(err, &mysqlErr) {
+		if mysqlErr.Number == 1062 { // Duplicate entry
+			// Usamos regex para extraer el campo de la clave
+			re := regexp.MustCompile(`for key '(.+?)'`)
+			matches := re.FindStringSubmatch(err.Error())
+			if len(matches) == 2 {
+				campo := matches[1]
+
+				// Ajustamos el nombre del campo para que se vea bonito
+				switch campo {
+				case "usuarios.correo":
+					campo = "correo"
+				case "usuarios.nombre":
+					campo = "usuario"
+				}
+
+				return fmt.Errorf("El %s ya está registrado", campo)
+			}
+			return fmt.Errorf("Dato duplicado en la base de datos")
+		}
+	}
+
+	return fmt.Errorf("Error interno: %v", err)
 }
