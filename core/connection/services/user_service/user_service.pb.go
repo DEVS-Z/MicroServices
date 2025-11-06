@@ -22,18 +22,16 @@ const (
 )
 
 type User struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PrimerNombre    string                 `protobuf:"bytes,2,opt,name=primer_nombre,json=primerNombre,proto3" json:"primer_nombre,omitempty"`
-	SegundoNombre   string                 `protobuf:"bytes,3,opt,name=segundo_nombre,json=segundoNombre,proto3" json:"segundo_nombre,omitempty"` // puede ser opcional
-	PrimerApellido  string                 `protobuf:"bytes,4,opt,name=primer_apellido,json=primerApellido,proto3" json:"primer_apellido,omitempty"`
-	SegundoApellido string                 `protobuf:"bytes,5,opt,name=segundo_apellido,json=segundoApellido,proto3" json:"segundo_apellido,omitempty"` // puede ser opcional
-	Matricula       string                 `protobuf:"bytes,6,opt,name=matricula,proto3" json:"matricula,omitempty"`
-	Correo          string                 `protobuf:"bytes,7,opt,name=correo,proto3" json:"correo,omitempty"`
-	Contrasena      string                 `protobuf:"bytes,8,opt,name=contrasena,proto3" json:"contrasena,omitempty"` // solo usado internamente
-	Rol             int32                  `protobuf:"varint,9,opt,name=rol,proto3" json:"rol,omitempty"`              // ID de rol
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Nombre        string                 `protobuf:"bytes,2,opt,name=nombre,proto3" json:"nombre,omitempty"`
+	Correo        string                 `protobuf:"bytes,3,opt,name=correo,proto3" json:"correo,omitempty"`
+	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	FechaRegistro string                 `protobuf:"bytes,5,opt,name=fecha_registro,json=fechaRegistro,proto3" json:"fecha_registro,omitempty"`
+	Estado        string                 `protobuf:"bytes,6,opt,name=estado,proto3" json:"estado,omitempty"`
+	RolId         int32                  `protobuf:"varint,7,opt,name=rol_id,json=rolId,proto3" json:"rol_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -66,44 +64,16 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetId() int32 {
+func (x *User) GetUserId() int32 {
 	if x != nil {
-		return x.Id
+		return x.UserId
 	}
 	return 0
 }
 
-func (x *User) GetPrimerNombre() string {
+func (x *User) GetNombre() string {
 	if x != nil {
-		return x.PrimerNombre
-	}
-	return ""
-}
-
-func (x *User) GetSegundoNombre() string {
-	if x != nil {
-		return x.SegundoNombre
-	}
-	return ""
-}
-
-func (x *User) GetPrimerApellido() string {
-	if x != nil {
-		return x.PrimerApellido
-	}
-	return ""
-}
-
-func (x *User) GetSegundoApellido() string {
-	if x != nil {
-		return x.SegundoApellido
-	}
-	return ""
-}
-
-func (x *User) GetMatricula() string {
-	if x != nil {
-		return x.Matricula
+		return x.Nombre
 	}
 	return ""
 }
@@ -115,32 +85,44 @@ func (x *User) GetCorreo() string {
 	return ""
 }
 
-func (x *User) GetContrasena() string {
+func (x *User) GetPassword() string {
 	if x != nil {
-		return x.Contrasena
+		return x.Password
 	}
 	return ""
 }
 
-func (x *User) GetRol() int32 {
+func (x *User) GetFechaRegistro() string {
 	if x != nil {
-		return x.Rol
+		return x.FechaRegistro
+	}
+	return ""
+}
+
+func (x *User) GetEstado() string {
+	if x != nil {
+		return x.Estado
+	}
+	return ""
+}
+
+func (x *User) GetRolId() int32 {
+	if x != nil {
+		return x.RolId
 	}
 	return 0
 }
 
 type UserSanitizer struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PrimerNombre    string                 `protobuf:"bytes,2,opt,name=primer_nombre,json=primerNombre,proto3" json:"primer_nombre,omitempty"`
-	SegundoNombre   string                 `protobuf:"bytes,3,opt,name=segundo_nombre,json=segundoNombre,proto3" json:"segundo_nombre,omitempty"`
-	PrimerApellido  string                 `protobuf:"bytes,4,opt,name=primer_apellido,json=primerApellido,proto3" json:"primer_apellido,omitempty"`
-	SegundoApellido string                 `protobuf:"bytes,5,opt,name=segundo_apellido,json=segundoApellido,proto3" json:"segundo_apellido,omitempty"`
-	Matricula       string                 `protobuf:"bytes,6,opt,name=matricula,proto3" json:"matricula,omitempty"`
-	Correo          string                 `protobuf:"bytes,7,opt,name=correo,proto3" json:"correo,omitempty"`
-	Rol             string                 `protobuf:"bytes,8,opt,name=rol,proto3" json:"rol,omitempty"` // nombre del rol en texto
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Nombre        string                 `protobuf:"bytes,2,opt,name=nombre,proto3" json:"nombre,omitempty"`
+	Correo        string                 `protobuf:"bytes,3,opt,name=correo,proto3" json:"correo,omitempty"`
+	FechaRegistro string                 `protobuf:"bytes,4,opt,name=fecha_registro,json=fechaRegistro,proto3" json:"fecha_registro,omitempty"`
+	Estado        string                 `protobuf:"bytes,5,opt,name=estado,proto3" json:"estado,omitempty"`
+	RolId         int32                  `protobuf:"varint,6,opt,name=rol_id,json=rolId,proto3" json:"rol_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UserSanitizer) Reset() {
@@ -173,44 +155,16 @@ func (*UserSanitizer) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UserSanitizer) GetId() int32 {
+func (x *UserSanitizer) GetUserId() int32 {
 	if x != nil {
-		return x.Id
+		return x.UserId
 	}
 	return 0
 }
 
-func (x *UserSanitizer) GetPrimerNombre() string {
+func (x *UserSanitizer) GetNombre() string {
 	if x != nil {
-		return x.PrimerNombre
-	}
-	return ""
-}
-
-func (x *UserSanitizer) GetSegundoNombre() string {
-	if x != nil {
-		return x.SegundoNombre
-	}
-	return ""
-}
-
-func (x *UserSanitizer) GetPrimerApellido() string {
-	if x != nil {
-		return x.PrimerApellido
-	}
-	return ""
-}
-
-func (x *UserSanitizer) GetSegundoApellido() string {
-	if x != nil {
-		return x.SegundoApellido
-	}
-	return ""
-}
-
-func (x *UserSanitizer) GetMatricula() string {
-	if x != nil {
-		return x.Matricula
+		return x.Nombre
 	}
 	return ""
 }
@@ -222,17 +176,31 @@ func (x *UserSanitizer) GetCorreo() string {
 	return ""
 }
 
-func (x *UserSanitizer) GetRol() string {
+func (x *UserSanitizer) GetFechaRegistro() string {
 	if x != nil {
-		return x.Rol
+		return x.FechaRegistro
 	}
 	return ""
+}
+
+func (x *UserSanitizer) GetEstado() string {
+	if x != nil {
+		return x.Estado
+	}
+	return ""
+}
+
+func (x *UserSanitizer) GetRolId() int32 {
+	if x != nil {
+		return x.RolId
+	}
+	return 0
 }
 
 // Peticiones
 type UserIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -267,9 +235,9 @@ func (*UserIdRequest) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UserIdRequest) GetId() int32 {
+func (x *UserIdRequest) GetUserId() int32 {
 	if x != nil {
-		return x.Id
+		return x.UserId
 	}
 	return 0
 }
@@ -319,16 +287,14 @@ func (x *UserFilterRequest) GetFilters() map[string]string {
 }
 
 type CreateUserRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	PrimerNombre    string                 `protobuf:"bytes,1,opt,name=primer_nombre,json=primerNombre,proto3" json:"primer_nombre,omitempty"`
-	SegundoNombre   string                 `protobuf:"bytes,2,opt,name=segundo_nombre,json=segundoNombre,proto3" json:"segundo_nombre,omitempty"`
-	PrimerApellido  string                 `protobuf:"bytes,3,opt,name=primer_apellido,json=primerApellido,proto3" json:"primer_apellido,omitempty"`
-	SegundoApellido string                 `protobuf:"bytes,4,opt,name=segundo_apellido,json=segundoApellido,proto3" json:"segundo_apellido,omitempty"`
-	Matricula       string                 `protobuf:"bytes,5,opt,name=matricula,proto3" json:"matricula,omitempty"`
-	Correo          string                 `protobuf:"bytes,6,opt,name=correo,proto3" json:"correo,omitempty"`
-	Rol             int32                  `protobuf:"varint,7,opt,name=rol,proto3" json:"rol,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Nombre        string                 `protobuf:"bytes,1,opt,name=nombre,proto3" json:"nombre,omitempty"`
+	Correo        string                 `protobuf:"bytes,2,opt,name=correo,proto3" json:"correo,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Estado        string                 `protobuf:"bytes,4,opt,name=estado,proto3" json:"estado,omitempty"`
+	RolId         int32                  `protobuf:"varint,5,opt,name=rol_id,json=rolId,proto3" json:"rol_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateUserRequest) Reset() {
@@ -361,37 +327,9 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *CreateUserRequest) GetPrimerNombre() string {
+func (x *CreateUserRequest) GetNombre() string {
 	if x != nil {
-		return x.PrimerNombre
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetSegundoNombre() string {
-	if x != nil {
-		return x.SegundoNombre
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetPrimerApellido() string {
-	if x != nil {
-		return x.PrimerApellido
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetSegundoApellido() string {
-	if x != nil {
-		return x.SegundoApellido
-	}
-	return ""
-}
-
-func (x *CreateUserRequest) GetMatricula() string {
-	if x != nil {
-		return x.Matricula
+		return x.Nombre
 	}
 	return ""
 }
@@ -403,25 +341,37 @@ func (x *CreateUserRequest) GetCorreo() string {
 	return ""
 }
 
-func (x *CreateUserRequest) GetRol() int32 {
+func (x *CreateUserRequest) GetPassword() string {
 	if x != nil {
-		return x.Rol
+		return x.Password
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetEstado() string {
+	if x != nil {
+		return x.Estado
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetRolId() int32 {
+	if x != nil {
+		return x.RolId
 	}
 	return 0
 }
 
 type UpdateUserRequest struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	PrimerNombre    string                 `protobuf:"bytes,2,opt,name=primer_nombre,json=primerNombre,proto3" json:"primer_nombre,omitempty"`
-	SegundoNombre   string                 `protobuf:"bytes,3,opt,name=segundo_nombre,json=segundoNombre,proto3" json:"segundo_nombre,omitempty"`
-	PrimerApellido  string                 `protobuf:"bytes,4,opt,name=primer_apellido,json=primerApellido,proto3" json:"primer_apellido,omitempty"`
-	SegundoApellido string                 `protobuf:"bytes,5,opt,name=segundo_apellido,json=segundoApellido,proto3" json:"segundo_apellido,omitempty"`
-	Matricula       string                 `protobuf:"bytes,6,opt,name=matricula,proto3" json:"matricula,omitempty"`
-	Correo          string                 `protobuf:"bytes,7,opt,name=correo,proto3" json:"correo,omitempty"`
-	Rol             int32                  `protobuf:"varint,8,opt,name=rol,proto3" json:"rol,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Nombre        string                 `protobuf:"bytes,2,opt,name=nombre,proto3" json:"nombre,omitempty"`
+	Correo        string                 `protobuf:"bytes,3,opt,name=correo,proto3" json:"correo,omitempty"`
+	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	Estado        string                 `protobuf:"bytes,5,opt,name=estado,proto3" json:"estado,omitempty"`
+	RolId         int32                  `protobuf:"varint,6,opt,name=rol_id,json=rolId,proto3" json:"rol_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateUserRequest) Reset() {
@@ -454,44 +404,16 @@ func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateUserRequest) GetId() int32 {
+func (x *UpdateUserRequest) GetUserId() int32 {
 	if x != nil {
-		return x.Id
+		return x.UserId
 	}
 	return 0
 }
 
-func (x *UpdateUserRequest) GetPrimerNombre() string {
+func (x *UpdateUserRequest) GetNombre() string {
 	if x != nil {
-		return x.PrimerNombre
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetSegundoNombre() string {
-	if x != nil {
-		return x.SegundoNombre
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetPrimerApellido() string {
-	if x != nil {
-		return x.PrimerApellido
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetSegundoApellido() string {
-	if x != nil {
-		return x.SegundoApellido
-	}
-	return ""
-}
-
-func (x *UpdateUserRequest) GetMatricula() string {
-	if x != nil {
-		return x.Matricula
+		return x.Nombre
 	}
 	return ""
 }
@@ -503,16 +425,30 @@ func (x *UpdateUserRequest) GetCorreo() string {
 	return ""
 }
 
-func (x *UpdateUserRequest) GetRol() int32 {
+func (x *UpdateUserRequest) GetPassword() string {
 	if x != nil {
-		return x.Rol
+		return x.Password
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetEstado() string {
+	if x != nil {
+		return x.Estado
+	}
+	return ""
+}
+
+func (x *UpdateUserRequest) GetRolId() int32 {
+	if x != nil {
+		return x.RolId
 	}
 	return 0
 }
 
 type DeleteUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -547,9 +483,9 @@ func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
 	return file_user_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteUserRequest) GetId() int32 {
+func (x *DeleteUserRequest) GetUserId() int32 {
 	if x != nil {
-		return x.Id
+		return x.UserId
 	}
 	return 0
 }
@@ -683,54 +619,44 @@ var File_user_service_proto protoreflect.FileDescriptor
 
 const file_user_service_proto_rawDesc = "" +
 	"\n" +
-	"\x12user_service.proto\x12\fuser_service\"\x9e\x02\n" +
-	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12#\n" +
-	"\rprimer_nombre\x18\x02 \x01(\tR\fprimerNombre\x12%\n" +
-	"\x0esegundo_nombre\x18\x03 \x01(\tR\rsegundoNombre\x12'\n" +
-	"\x0fprimer_apellido\x18\x04 \x01(\tR\x0eprimerApellido\x12)\n" +
-	"\x10segundo_apellido\x18\x05 \x01(\tR\x0fsegundoApellido\x12\x1c\n" +
-	"\tmatricula\x18\x06 \x01(\tR\tmatricula\x12\x16\n" +
-	"\x06correo\x18\a \x01(\tR\x06correo\x12\x1e\n" +
-	"\n" +
-	"contrasena\x18\b \x01(\tR\n" +
-	"contrasena\x12\x10\n" +
-	"\x03rol\x18\t \x01(\x05R\x03rol\"\x87\x02\n" +
-	"\rUserSanitizer\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12#\n" +
-	"\rprimer_nombre\x18\x02 \x01(\tR\fprimerNombre\x12%\n" +
-	"\x0esegundo_nombre\x18\x03 \x01(\tR\rsegundoNombre\x12'\n" +
-	"\x0fprimer_apellido\x18\x04 \x01(\tR\x0eprimerApellido\x12)\n" +
-	"\x10segundo_apellido\x18\x05 \x01(\tR\x0fsegundoApellido\x12\x1c\n" +
-	"\tmatricula\x18\x06 \x01(\tR\tmatricula\x12\x16\n" +
-	"\x06correo\x18\a \x01(\tR\x06correo\x12\x10\n" +
-	"\x03rol\x18\b \x01(\tR\x03rol\"\x1f\n" +
-	"\rUserIdRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"\x97\x01\n" +
+	"\x12user_service.proto\x12\fuser_service\"\xc1\x01\n" +
+	"\x04User\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x16\n" +
+	"\x06nombre\x18\x02 \x01(\tR\x06nombre\x12\x16\n" +
+	"\x06correo\x18\x03 \x01(\tR\x06correo\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12%\n" +
+	"\x0efecha_registro\x18\x05 \x01(\tR\rfechaRegistro\x12\x16\n" +
+	"\x06estado\x18\x06 \x01(\tR\x06estado\x12\x15\n" +
+	"\x06rol_id\x18\a \x01(\x05R\x05rolId\"\xae\x01\n" +
+	"\rUserSanitizer\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x16\n" +
+	"\x06nombre\x18\x02 \x01(\tR\x06nombre\x12\x16\n" +
+	"\x06correo\x18\x03 \x01(\tR\x06correo\x12%\n" +
+	"\x0efecha_registro\x18\x04 \x01(\tR\rfechaRegistro\x12\x16\n" +
+	"\x06estado\x18\x05 \x01(\tR\x06estado\x12\x15\n" +
+	"\x06rol_id\x18\x06 \x01(\x05R\x05rolId\"(\n" +
+	"\rUserIdRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"\x97\x01\n" +
 	"\x11UserFilterRequest\x12F\n" +
 	"\afilters\x18\x01 \x03(\v2,.user_service.UserFilterRequest.FiltersEntryR\afilters\x1a:\n" +
 	"\fFiltersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xfb\x01\n" +
-	"\x11CreateUserRequest\x12#\n" +
-	"\rprimer_nombre\x18\x01 \x01(\tR\fprimerNombre\x12%\n" +
-	"\x0esegundo_nombre\x18\x02 \x01(\tR\rsegundoNombre\x12'\n" +
-	"\x0fprimer_apellido\x18\x03 \x01(\tR\x0eprimerApellido\x12)\n" +
-	"\x10segundo_apellido\x18\x04 \x01(\tR\x0fsegundoApellido\x12\x1c\n" +
-	"\tmatricula\x18\x05 \x01(\tR\tmatricula\x12\x16\n" +
-	"\x06correo\x18\x06 \x01(\tR\x06correo\x12\x10\n" +
-	"\x03rol\x18\a \x01(\x05R\x03rol\"\x8b\x02\n" +
-	"\x11UpdateUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12#\n" +
-	"\rprimer_nombre\x18\x02 \x01(\tR\fprimerNombre\x12%\n" +
-	"\x0esegundo_nombre\x18\x03 \x01(\tR\rsegundoNombre\x12'\n" +
-	"\x0fprimer_apellido\x18\x04 \x01(\tR\x0eprimerApellido\x12)\n" +
-	"\x10segundo_apellido\x18\x05 \x01(\tR\x0fsegundoApellido\x12\x1c\n" +
-	"\tmatricula\x18\x06 \x01(\tR\tmatricula\x12\x16\n" +
-	"\x06correo\x18\a \x01(\tR\x06correo\x12\x10\n" +
-	"\x03rol\x18\b \x01(\x05R\x03rol\"#\n" +
-	"\x11DeleteUserRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"E\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8e\x01\n" +
+	"\x11CreateUserRequest\x12\x16\n" +
+	"\x06nombre\x18\x01 \x01(\tR\x06nombre\x12\x16\n" +
+	"\x06correo\x18\x02 \x01(\tR\x06correo\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x16\n" +
+	"\x06estado\x18\x04 \x01(\tR\x06estado\x12\x15\n" +
+	"\x06rol_id\x18\x05 \x01(\x05R\x05rolId\"\xa7\x01\n" +
+	"\x11UpdateUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\x16\n" +
+	"\x06nombre\x18\x02 \x01(\tR\x06nombre\x12\x16\n" +
+	"\x06correo\x18\x03 \x01(\tR\x06correo\x12\x1a\n" +
+	"\bpassword\x18\x04 \x01(\tR\bpassword\x12\x16\n" +
+	"\x06estado\x18\x05 \x01(\tR\x06estado\x12\x15\n" +
+	"\x06rol_id\x18\x06 \x01(\x05R\x05rolId\",\n" +
+	"\x11DeleteUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"E\n" +
 	"\x10UserListResponse\x121\n" +
 	"\x05users\x18\x01 \x03(\v2\x1b.user_service.UserSanitizerR\x05users\"?\n" +
 	"\fUserResponse\x12/\n" +
