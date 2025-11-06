@@ -4,6 +4,7 @@ import (
 	"errors"
 	key "main/core/security/token"
 	user "main/source/modules/usuarios"
+	"time"
 
 	"github.com/miqueaz/FrameGo/pkg/crypto"
 )
@@ -56,19 +57,22 @@ func SignUp(username string, email string, password string) (string, error) {
 		return "", err
 	}
 
-	user, err := user.Service.Insert(user.Model{
-		UserId:        nil,
+	estado := "activo"
+	rol := 5
+	fechaRegistro := string(time.Now().Format("2006-01-02"))
+
+	_, err = user.Service.Insert(user.Model{
 		Nombre:        &username,
 		Correo:        &email,
 		Password:      &hashedPassword,
-		FechaRegistro: nil,
-		Estado:        nil,
-		RolId:         nil,
+		FechaRegistro: &fechaRegistro,
+		Estado:        &estado,
+		RolId:         &rol,
 	})
 
 	if err != nil {
 		return "", err
 	}
 
-	return *user.Nombre, nil
+	return "Registro Exitoso", nil
 }
