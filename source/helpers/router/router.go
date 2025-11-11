@@ -26,8 +26,10 @@ func init() {
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"},
 		AllowHeaders:     []string{"*"},
-		AllowCredentials: true,
+		AllowCredentials: false,
 	}))
+	rout.Use(gin.Logger())
+	rout.Use(gin.Recovery())
 	rout.GET("/", func(c *gin.Context) {
 		//Redirecciona a swagger
 		c.Redirect(302, "/swagger/index.html")
