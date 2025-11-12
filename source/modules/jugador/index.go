@@ -1,22 +1,22 @@
-package miembros
+package jugador
 
 import (
 	jwt_middleware "main/source/helpers/middlewares/jwt"
 	"main/source/helpers/router"
-	miembros_model "main/source/modules/miembros/model"
+	jugador_model "main/source/modules/jugador/model"
 
 	base_service "github.com/miqueaz/FrameGo/pkg/base/service"
 )
 
-var Service = base_service.NewService[base_service.Default[miembros_model.MiembrosStruct]](*miembros_model.Model)
+var Service = base_service.NewService[base_service.Default[jugador_model.JugadorStruct]](*jugador_model.Model)
 
 func Init() {
-	print("Miembros Module Initialized\n")
+	print("Jugador Module Initialized\n")
 	InitRoutes()
 }
 
 func InitRoutes() {
-	var r = router.NewRoute("/miembros")
+	var r = router.NewRoute("/jugadores")
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)

@@ -1,12 +1,18 @@
 -- ========================================
--- CREAR BASE DE DATOS
+-- 1. BORRAR LA BASE DE DATOS (SI EXISTE)
+-- ========================================
+DROP DATABASE IF EXISTS zfut;
+
+-- ========================================
+-- 2. CREAR BASE DE DATOS Y USARLA
 -- ========================================
 CREATE DATABASE IF NOT EXISTS zfut;
 USE zfut;
 
 -- ========================================
--- TABLAS BASE
+-- 3. TABLAS DE USUARIOS Y ACCESO
 -- ========================================
+
 CREATE TABLE IF NOT EXISTS roles (
   rol_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(80) NOT NULL UNIQUE
@@ -24,202 +30,128 @@ CREATE TABLE IF NOT EXISTS usuarios (
 ) ENGINE=InnoDB;
 
 -- ========================================
--- CLUBES, SUSCRIPCIONES Y PAGOS
+-- 4. PERFIL DEL JUGADOR
 -- ========================================
-CREATE TABLE IF NOT EXISTS clubs (
-  club_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(120) NOT NULL,
-  pais VARCHAR(80),
-  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  owner_id BIGINT,
-  FOREIGN KEY (owner_id) REFERENCES usuarios(user_id)
-) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS suscripciones (
-  suscripcion_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(100) NOT NULL UNIQUE,
-  precio DECIMAL(12,2) NOT NULL DEFAULT 0,
-  cant_players INT NOT NULL
-) ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS club_suscripcion (
-  club_subs_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  club_id BIGINT NOT NULL,
-  suscripcion_id BIGINT NOT NULL,
-  owner_id BIGINT,
-  fecha_inicio DATE NOT NULL,
-  fecha_fin DATE,
-  status VARCHAR(30) NOT NULL DEFAULT 'activa',
-  jugadores_act INT NOT NULL DEFAULT 0,
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id),
-  FOREIGN KEY (suscripcion_id) REFERENCES suscripciones(suscripcion_id),
-  FOREIGN KEY (owner_id) REFERENCES usuarios(user_id)
-) ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS pagos (
-  pago_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  club_subs_id BIGINT NOT NULL,
-  total_pagado DECIMAL(12,2) NOT NULL,
-  fecha_pago TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (club_subs_id) REFERENCES club_suscripcion(club_subs_id)
-) ENGINE=InnoDB;
-
--- ========================================
--- MIEMBROS / JUGADORES
--- ========================================
-CREATE TABLE IF NOT EXISTS miembros (
-  miembro_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS jugadores (
+  jugador_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT NOT NULL UNIQUE,
   posicion VARCHAR(40),
-  weareable_id VARCHAR(80),
-  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  weareable_id VARCHAR(80) UNIQUE,
   altura DECIMAL(5,2),
   peso DECIMAL(5,2),
-  user_id BIGINT,
+  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES usuarios(user_id)
 ) ENGINE=InnoDB;
 
 -- ========================================
--- EQUIPOS Y EVENTOS
+-- 5. RUTINAS Y EJERCICIOS
 -- ========================================
-CREATE TABLE IF NOT EXISTS equipos (
-  equipo_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  club_id BIGINT NOT NULL,
-  nombre VARCHAR(120) NOT NULL,
-  categoria VARCHAR(80),
-  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE KEY uq_club_nombre (club_id, nombre),
-  FOREIGN KEY (club_id) REFERENCES clubs(club_id)
-) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS eventos (
-  evento_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  equipo_id BIGINT NOT NULL,
-  creado_por_id BIGINT,
-  titulo_evento VARCHAR(160) NOT NULL,
-  fecha_inicio TIMESTAMP NOT NULL,
-  fecha_fin TIMESTAMP,
-  tipo VARCHAR(60),
-  comentarios TEXT,
-  lugar VARCHAR(160),
-  FOREIGN KEY (equipo_id) REFERENCES equipos(equipo_id),
-  FOREIGN KEY (creado_por_id) REFERENCES miembros(miembro_id)
-) ENGINE=InnoDB;
-
--- ========================================
--- RUTINAS Y EJERCICIOS
--- ========================================
 CREATE TABLE IF NOT EXISTS rutinas (
   rutina_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   creado_por_id BIGINT,
-  equipo_id BIGINT,
   nombre VARCHAR(120) NOT NULL,
   objetivo TEXT,
+  tipo VARCHAR(80),
   nivel_dificultad VARCHAR(40),
   fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (creado_por_id) REFERENCES miembros(miembro_id),
-  FOREIGN KEY (equipo_id) REFERENCES equipos(equipo_id)
+  FOREIGN KEY (creado_por_id) REFERENCES usuarios(user_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS ejercicios (
   ejercicio_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  rutina_id BIGINT,
+  rutina_id BIGINT NOT NULL,
   nombre VARCHAR(120) NOT NULL,
   series INT,
   repeticiones INT,
   duracion_segs INT,
   intensidad VARCHAR(40),
-  FOREIGN KEY (rutina_id) REFERENCES rutinas(rutina_id)
+  FOREIGN KEY (rutina_id) REFERENCES rutinas(rutina_id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS asignacion_rutinas (
+CREATE TABLE IF NOT EXISTS jugador_rutinas (
   asignacion_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  rutina_id BIGINT,
-  jugador_id BIGINT,
-  equipo_id BIGINT,
-  fecha_inicio DATE NOT NULL,
-  fecha_fin DATE,
-  frecuencia VARCHAR(80),
+  rutina_id BIGINT NOT NULL,
+  jugador_id BIGINT NOT NULL,
+  fecha_asignacion DATE NOT NULL DEFAULT (CURRENT_DATE),
   comentarios TEXT,
-  rol_id BIGINT,
   FOREIGN KEY (rutina_id) REFERENCES rutinas(rutina_id),
-  FOREIGN KEY (jugador_id) REFERENCES miembros(miembro_id),
-  FOREIGN KEY (equipo_id) REFERENCES equipos(equipo_id),
-  FOREIGN KEY (rol_id) REFERENCES roles(rol_id)
+  FOREIGN KEY (jugador_id) REFERENCES jugadores(jugador_id)
 ) ENGINE=InnoDB;
 
 -- ========================================
--- ACTIVIDADES Y MÉTRICAS
+-- 6. ACTIVIDADES Y MÉTRICAS
 -- ========================================
+
 CREATE TABLE IF NOT EXISTS actividades (
   actividad_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  jugador_id BIGINT,
-  miembro_id BIGINT,
+  jugador_id BIGINT NOT NULL,
+  rutina_id BIGINT NULL,
   tipo VARCHAR(80) NOT NULL,
   fecha_inicio TIMESTAMP NOT NULL,
   fecha_fin TIMESTAMP,
-  comentarios TEXT,
-  FOREIGN KEY (jugador_id) REFERENCES miembros(miembro_id),
-  FOREIGN KEY (miembro_id) REFERENCES miembros(miembro_id)
+  descripcion TEXT,
+  FOREIGN KEY (jugador_id) REFERENCES jugadores(jugador_id),
+  FOREIGN KEY (rutina_id) REFERENCES rutinas(rutina_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS signos_vitales (
-  signos_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  actividad_id BIGINT,
+CREATE TABLE IF NOT EXISTS metricas (
+  metrica_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  actividad_id BIGINT NOT NULL,
   fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   metrica VARCHAR(80),
-  valor DECIMAL(12,4),
+  valor VARCHAR(100),
   unidad_medida VARCHAR(40),
-  miembro_id BIGINT,
-  FOREIGN KEY (actividad_id) REFERENCES actividades(actividad_id),
-  FOREIGN KEY (miembro_id) REFERENCES miembros(miembro_id)
-) ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS alertas (
-  alertas_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  actividad_id BIGINT,
-  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  tipo VARCHAR(80),
-  descripcion TEXT,
-  gravedad VARCHAR(40),
-  atendido_si_no TINYINT(1) DEFAULT 0,
-  miembro_id BIGINT,
-  FOREIGN KEY (actividad_id) REFERENCES actividades(actividad_id),
-  FOREIGN KEY (miembro_id) REFERENCES miembros(miembro_id)
-) ENGINE=InnoDB;
-
-CREATE TABLE IF NOT EXISTS reportes (
-  reporte_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  jugador_id BIGINT,
-  fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  tipo VARCHAR(80),
-  comentarios TEXT,
-  FOREIGN KEY (jugador_id) REFERENCES miembros(miembro_id)
+  FOREIGN KEY (actividad_id) REFERENCES actividades(actividad_id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 -- ========================================
--- DATOS DE PRUEBA
+-- 7. DATOS DE PRUEBA
 -- ========================================
+
+-- Insertar Roles
 INSERT INTO roles (nombre) VALUES 
 ('owner'), ('coach'), ('analyst'), ('assistant'), ('athlete')
 ON DUPLICATE KEY UPDATE nombre = nombre;
 
+-- Insertar Usuarios
 INSERT INTO usuarios (nombre, correo, password, estado, rol_id) VALUES 
-('Carla López', 'owner@zfut.test', 'hashed_pw', 'activo', 1),
 ('Diego Ramírez', 'coach@zfut.test', 'hashed_pw', 'activo', 2),
-('Ana Pérez', 'analyst@zfut.test', 'hashed_pw', 'activo', 3),
-('Luis Mora', 'assistant@zfut.test', 'hashed_pw', 'activo', 4),
 ('Jugador Uno', 'p1@zfut.test', 'hashed_pw', 'activo', 5),
 ('Jugador Dos', 'p2@zfut.test', 'hashed_pw', 'activo', 5)
 ON DUPLICATE KEY UPDATE correo = correo;
 
-INSERT INTO clubs (nombre, pais, owner_id) VALUES 
-('ZFut FC', 'México', 1)
+-- Insertar Perfiles de Jugador (vinculados a usuarios)
+-- NOTA: Asegúrate que los user_id (2 y 3) coincidan con los IDs que se generaron arriba.
+INSERT INTO jugadores (user_id, posicion, altura, peso, weareable_id) VALUES
+(2, 'Delantero', 1.80, 75.5, 'WEAR-P1-001'),
+(3, 'Defensa', 1.85, 80.1, 'WEAR-P2-002')
+ON DUPLICATE KEY UPDATE user_id = user_id;
+
+-- Insertar una Rutina (creada por el coach, user_id = 1)
+-- NOTA: Asegúrate que el creado_por_id (1) coincida con el ID del coach.
+INSERT INTO rutinas (creado_por_id, nombre, objetivo, nivel_dificultad) VALUES
+(1, 'Fuerza Explosiva - Tren Inferior', 'Aumentar potencia de salto y sprint', 'Intermedio')
 ON DUPLICATE KEY UPDATE nombre = nombre;
 
-INSERT INTO suscripciones (nombre, precio, cant_players) VALUES
-('Basic', 0.00, 25), ('Pro', 49.99, 100)
-ON DUPLICATE KEY UPDATE nombre = nombre;
+-- Insertar Ejercicios para esa Rutina (asumiendo que la rutina_id es 1)
+INSERT INTO ejercicios (rutina_id, nombre, series, repeticiones) VALUES
+(1, 'Sentadilla con Salto', 4, 10),
+(1, 'Desplantes pliométricos', 3, 12),
+(1, 'Box Jumps', 4, 8);
 
-INSERT INTO club_suscripcion (club_id, suscripcion_id, owner_id, fecha_inicio, status, jugadores_act)
-VALUES (1, 2, 1, NOW(), 'activa', 6)
-ON DUPLICATE KEY UPDATE status = status;
+-- Asignar la Rutina 1 al Jugador 1 (asumiendo IDs 1 y 1)
+INSERT INTO jugador_rutinas (rutina_id, jugador_id, comentarios) VALUES
+(1, 1, 'Lunes y Jueves, enfocar en técnica');
+
+-- Registrar una Actividad para el Jugador 1
+INSERT INTO actividades (jugador_id, tipo, fecha_inicio, fecha_fin, descripcion) VALUES
+(1, 'Entrenamiento', '2025-11-10 09:00:00', '2025-11-10 10:30:00', 'Sesión de campo');
+
+-- Registrar Métricas para esa Actividad (asumiendo actividad_id es 1)
+INSERT INTO metricas (actividad_id, metrica, valor, unidad_medida) VALUES
+(1, 'Ritmo Cardíaco Promedio', '145', 'bpm'),
+(1, 'Distancia Total', '7.8', 'km'),
+(1, 'Sprints > 20km/h', '12', 'conteo'),
+(1, 'Alerta', 'Pico de fatiga detectado', 'status');

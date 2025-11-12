@@ -11,6 +11,7 @@ type RutinasStruct struct {
 	EquipoId        *int    `db:"equipo_id" sanitizer:"id" visible:"false"`
 	Nombre          *string `db:"nombre"`
 	Objetivo        *string `db:"objetivo"`
+	Tipo            *string `db:"tipo"`
 	NivelDificultad *string `db:"nivel_dificultad"`
 	FechaRegistro   *string `db:"fecha_registro"`
 }
