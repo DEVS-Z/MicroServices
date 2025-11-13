@@ -6,7 +6,7 @@ import (
 )
 
 type MetricasStruct struct {
-	MetricaId     *int    `db:"metrica_id" sanitizer:"id" visible:"false"`
+	MetricaId     *int    `db:"metrica_id" sanitizer:"id" visible:"false" type: "pk"`
 	ActividadId   *int    `db:"actividad_id" sanitizer:"id"`
 	FechaRegistro *string `db:"fecha_registro" sanitizer:"datetime" visible:"false"`
 	Metrica       *string `db:"metrica" sanitizer:"text"`
