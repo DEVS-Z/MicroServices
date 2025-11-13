@@ -20,7 +20,7 @@ func InitRoutes() {
 	r.USE(jwt_middleware.JWTMiddleware())
 	r.GET("/", Service.Read)
 	r.POST("/", Service.Insert)
-
+	r.GET("/:id", Service.ReadOne)
 	r.PUT("/:id", Service.Update)
 	r.DELETE("/:id", Service.Delete)
 }

@@ -6,7 +6,7 @@ import (
 )
 
 type RolesStruct struct {
-	RolId  *int    `db:"rol_id" sanitizer:"id" visible:"false" type: "pk"`
+	RolId  *int    `db:"rol_id" sanitizer:"id" visible:"false" type:"pk"`
 	Nombre *string `db:"nombre"`
 }
 
