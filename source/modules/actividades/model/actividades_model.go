@@ -8,7 +8,6 @@ import (
 type ActividadesStruct struct {
 	ActividadId *int    `db:"actividad_id" sanitizer:"id" visible:"false" type: "pk"`
 	JugadorId   *int    `db:"jugador_id" sanitizer:"id" visible:"false"`
-	MiembroId   *int    `db:"miembro_id" sanitizer:"id" visible:"false"`
 	RutinaId    *int    `db:"rutina_id" sanitizer:"id" visible:"false"`
 	Tipo        *string `db:"tipo"`
 	FechaInicio *string `db:"fecha_inicio"`

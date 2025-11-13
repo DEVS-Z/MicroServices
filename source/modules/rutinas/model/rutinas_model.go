@@ -8,7 +8,6 @@ import (
 type RutinasStruct struct {
 	RutinaId        *int    `db:"rutina_id" sanitizer:"id" visible:"false" type: "pk"`
 	CreadoPorId     *int    `db:"creado_por_id" sanitizer:"id" visible:"false"`
-	EquipoId        *int    `db:"equipo_id" sanitizer:"id" visible:"false"`
 	Nombre          *string `db:"nombre"`
 	Objetivo        *string `db:"objetivo"`
 	Tipo            *string `db:"tipo"`

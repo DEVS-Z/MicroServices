@@ -6,12 +6,13 @@ import (
 )
 
 type JugadorStruct struct {
-	JugadorId    *int    `db:"jugador_id" sanitizer:"id" visible:"false" type: "pk"`
-	Nombre       *string `db:"nombre" sanitizer:"text" visible:"true" type: "text"`
-	Series       *int    `db:"series" sanitizer:"int" visible:"true" type: "int"`
-	Repeticiones *int    `db:"repeticiones" sanitizer:"int" visible:"true" type: "int"`
-	DuracionSegs *int    `db:"duracion_segs" sanitizer:"int" visible:"true" type: "int"`
-	Intensidad   *string `db:"intensidad" sanitizer:"text" visible:"true" type: "text"`
+	JugadorId     *int    `db:"jugador_id" sanitizer:"id" visible:"false" type: "pk"`
+	UsuarioId     *int    `db:"user_id" sanitizer:"id" visible:"false"`
+	Posicion      *int    `db:"posicion" sanitizer:"int"`
+	Altura        *int    `db:"altura" sanitizer:"int"`
+	Peso          *int    `db:"peso" sanitizer:"int"`
+	FechaRegistro *string `db:"fecha_registro" sanitizer:"datetime"`
+	WearableId    *int    `db:"wearable_id" sanitizer:"id" visible:"false"`
 }
 
 var Model = base_models.NewModel[JugadorStruct]("jugadores", "zfut.jugadores")

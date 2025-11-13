@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Rest Server API",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "Documentación generada a partir de la colección Postman."
   },
   "servers": [
@@ -72,10 +72,6 @@
             "type": "integer",
             "nullable": true
           },
-          "MiembroId": {
-            "type": "integer",
-            "nullable": true
-          },
           "Tipo": {
             "type": "string"
           },
@@ -130,23 +126,29 @@
             "type": "integer",
             "nullable": true
           },
-          "Nombre": {
-            "type": "string"
-          },
-          "Series": {
+          "UsuarioId": {
             "type": "integer",
             "nullable": true
           },
-          "Repeticiones": {
+          "Posicion": {
             "type": "integer",
             "nullable": true
           },
-          "DuracionSegs": {
+          "Altura": {
             "type": "integer",
             "nullable": true
           },
-          "Intensidad": {
-            "type": "string"
+          "Peso": {
+            "type": "integer",
+            "nullable": true
+          },
+          "FechaRegistro": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "WearableId": {
+            "type": "integer",
+            "nullable": true
           }
         }
       },
@@ -170,10 +172,6 @@
             "nullable": true
           },
           "CreadoPorId": {
-            "type": "integer",
-            "nullable": true
-          },
-          "EquipoId": {
             "type": "integer",
             "nullable": true
           },
